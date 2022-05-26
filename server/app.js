@@ -1,8 +1,17 @@
-const express = require('express')
-
-const PORT = process.env.PORT || 4000;
-
+const config = require('./config/config');
+const express = require('express');
 const app = express();
+const PORT = process.env.PORT ?? 4000;
 
+const registrationRouter = require('./routes/authorizationRoutes/registration.route');
+const loginRouter = require('./routes/authorizationRoutes/login.route');
+const logoutRouter = require('./routes/authorizationRoutes/logout.route');
 
-app.listen(PORT, () => console.log('Server started at port:', PORT))
+config(app);
+app.use('/registration', registrationRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server started at ${PORT} port`);
+});
