@@ -8,7 +8,7 @@ function Greeting(props) {
 
   return (
     <div>
-      <h2>Уважаемый(-ая) ${session.firstname} {session.fathersname ? `${session.fathersname}` : " "} !</h2> <br />
+      <h2>Уважаемый(-ая) {session.firstname} {session.fathersname ? `${session.fathersname}` : " "} !</h2> <br />
       <p>Здесь Вы можете найти юриста и работать с ним в режиме реального времени. Logos дает возможность найти юриста для любых целей и задач, а также легко и комфортно обмениваться информацией для эффектной работы.</p> <br />
       <p>Добро пожаловать!</p>
 
