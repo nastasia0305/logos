@@ -13,38 +13,37 @@ router.post('/',async (req, res) => {
       email,
       password,
       city,
-      rating,
       select // ?? Выбор роли, Юрист либо Клиент
     } = req.body;
 
     const hashPassword = await bcrypt.hash(password, saltRounds);
-    const client = Client.findOne({ where: { email } });
-    const lawyer = Lawyer.findOne({ where: { email } });
+    const client = await Client.findOne({ where: { email } });
+    const lawyer = await Lawyer.findOne({ where: { email } });
 
     if (password.length < 8) {
       res.status(400).json({ message: 'Пароль должен содержать не менее 8 символов' });
     } else if (!client && !lawyer && password >= 8) {
       if (select === 'Юрист') { // Изменить Юрист на то что придет с формы
-        await Lawyer.create({
+        const lawyerr = await Lawyer.create({
           firstname,
           lastname,
           fathersname,
           email,
           password: hashPassword,
           city,
-          rating,
         });
+      req.session.lawyer = lawyerr;
         res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
     } else {
-      await Client.create({
+      const clientt = await Client.create({
         firstname,
         lastname,
         fathersname,
         email,
         password: hashPassword,
         city,
-        rating,
       });
+      req.session.client = clientt;
       res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
     }
     } else {
