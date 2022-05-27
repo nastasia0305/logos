@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const { Client } = require("../../db/models");
-const { Lawyer } = require("../../db/models");
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { Client } = require('../../db/models');
+const { Lawyer } = require('../../db/models');
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -12,18 +12,18 @@ router.post("/", async (req, res) => {
 
     if (client) {
       const isPassValide = await bcrypt.compare(password, client.password);
-    
+
       if (isPassValide) {
         req.session.client = client;
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          client
+          client,
         });
       } else {
         res.status(401).json({
-          message: 'Некорректные данные'
+          message: 'Некорректные данные',
         });
-      };
+      }
     } else if (lawyer) {
       const isPassValide2 = await bcrypt.compare(password, lawyer.password);
 
@@ -31,23 +31,23 @@ router.post("/", async (req, res) => {
         req.session.lawyer = lawyer;
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          lawyer
-        })
+          lawyer,
+        });
       } else {
         res.status(401).json({
-          message: 'Некорректные данные'
+          message: 'Некорректные данные',
         });
       }
     } else {
       res.status(404).json({
-        message: 'Такого пользователя не существует'
+        message: 'Такого пользователя не существует',
       });
-    };
+    }
   } catch (error) {
     res.status(400).json({
-      message: "Ошибка входа",
+      message: 'Ошибка входа',
     });
-  };
+  }
 });
 
 module.exports = router;
