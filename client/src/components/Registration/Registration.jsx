@@ -10,8 +10,8 @@ function Registration(props) {
   const { session } = useSelector(state => state.session )
   console.log(session);
   const handleSubmit = (e) => {
-e.preventDefault()
-const data = {
+  e.preventDefault()
+  const data = {
   firstname: e.target.firstname.value,
   lastname: e.target.lastname.value,
   fathersname: e.target.fathersname.value,
