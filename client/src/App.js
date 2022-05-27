@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
@@ -6,8 +8,18 @@ import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import Profile from "./components/Profile/Profile";
+import { checkAuthFetch } from './redux/thunk/asyncUsers';
+
 
 function App() {
+  const dispatch = useDispatch();
+  const { session } = useSelector(state => state.session);
+  console.log(session);
+
+  useEffect(() => {
+    dispatch(checkAuthFetch())
+  },[dispatch])
+  
   return (
     <BrowserRouter>
     <Nav />
