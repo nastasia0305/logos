@@ -7,8 +7,8 @@ router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const client = Client.findOne({ where: { email } });
-    const lawyer = Lawyer.findOne({ where: { email } });
+    const client = await Client.findOne({ where: { email } });
+    const lawyer = await Lawyer.findOne({ where: { email } });
 
     if (client) {
       const isPassValide = await bcrypt.compare(password, client.password);
