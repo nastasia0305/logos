@@ -16,6 +16,7 @@ function Login(props) {
     };
 console.log(data);
 dispatch(loginUser(data))
+navigate('/profile')
   }
   
   return (

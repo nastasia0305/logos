@@ -33,7 +33,8 @@ router.post('/', async (req, res) => {
           password: hashPassword,
           city,
         });
-        req.session.lawyer = lawyerr;
+        req.session.user = lawyerr;
+        req.session.isLawyer = true;
         res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
       } else {
         const clientt = await Client.create({
@@ -44,7 +45,9 @@ router.post('/', async (req, res) => {
           password: hashPassword,
           city,
         });
-        req.session.client = clientt;
+        req.session.user = clientt;
+        req.session.isLawyer = false;
+        console.log(req.session.role);
         res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
       }
     } else {
