@@ -2,11 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
-import Registration from "./components/Registration";
+import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import Profile from "./components/Profile/Profile";
-
 
 function App() {
   return (
@@ -21,10 +20,6 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="*"  element={<Error />} />
     </Routes>
-
-    
-    <div className="App">
-    </div>
     </BrowserRouter>
   );
 }

@@ -8,17 +8,11 @@ function Nav() {
 
   const { session } = useSelector(store => store.session)
 
+
   return (
     <div>
-      <div>
-          <Link to="/">LOGOS</Link>
-          <ul>
-            <li><Link to="/registration">Регистрация</Link></li>
-            <li><Link to="/login">Вход</Link></li>
-          </ul>
-        </div>
   
-    {/* <nav>
+    <nav>
       {
         (!session.firstname)
         ?
@@ -27,6 +21,8 @@ function Nav() {
           <ul>
             <li><Link to="/registration">Регистрация</Link></li>
             <li><Link to="/login">Вход</Link></li>
+            <li><Link to="/profile">Личный кабинет</Link></li>
+          <li><Link to="/logout">Выход</Link></li>
           </ul>
         </div>
       :
@@ -38,7 +34,7 @@ function Nav() {
         </ul>
       </>
       }
-    </nav> */}
+    </nav>
     </div>
   );
 }
