@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "../Registration/Registration.css";
 import { registerUser } from '../../redux/thunk/asyncUsers'
@@ -7,7 +7,8 @@ import { registerUser } from '../../redux/thunk/asyncUsers'
 function Registration(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+  const { session } = useSelector(state => state.session )
+  console.log(session);
   const handleSubmit = (e) => {
 e.preventDefault()
 const data = {

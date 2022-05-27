@@ -14,7 +14,8 @@ router.post('/', async (req, res) => {
       const isPassValide = await bcrypt.compare(password, client.password);
 
       if (isPassValide) {
-        req.session.client = client;
+        req.session.user = client;
+        req.session.isLawyer = false;
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
           client,
@@ -28,7 +29,8 @@ router.post('/', async (req, res) => {
       const isPassValide2 = await bcrypt.compare(password, lawyer.password);
 
       if (isPassValide2) {
-        req.session.lawyer = lawyer;
+        req.session.user = lawyer;
+        req.session.isLawyer = true;
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
           lawyer,
