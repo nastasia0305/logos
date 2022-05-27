@@ -1,11 +1,12 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const { Client } = require('../../db/models');
 const { Lawyer } = require('../../db/models');
-const bcrypt = require('bcrypt');
+
 const saltRounds = 10;
 
-router.post('/',async (req, res) => {
-  try{
+router.post('/', async (req, res) => {
+  try {
     const {
       firstname,
       lastname,
@@ -13,7 +14,7 @@ router.post('/',async (req, res) => {
       email,
       password,
       city,
-      select // ?? Выбор роли, Юрист либо Клиент
+      select, // ?? Выбор роли, Юрист либо Клиент
     } = req.body;
 
     const hashPassword = await bcrypt.hash(password, saltRounds);
@@ -32,28 +33,26 @@ router.post('/',async (req, res) => {
           password: hashPassword,
           city,
         });
-      req.session.lawyer = lawyerr;
+        req.session.lawyer = lawyerr;
         res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
-    } else {
-      const clientt = await Client.create({
-        firstname,
-        lastname,
-        fathersname,
-        email,
-        password: hashPassword,
-        city,
-      });
-      req.session.client = clientt;
-      res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
-    }
+      } else {
+        const clientt = await Client.create({
+          firstname,
+          lastname,
+          fathersname,
+          email,
+          password: hashPassword,
+          city,
+        });
+        req.session.client = clientt;
+        res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
+      }
     } else {
       res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
-    };
-  }
-  catch (error) {
+    }
+  } catch (error) {
     res.status(400).json({ message: 'Ошибка при регистрации' });
   }
 });
 
 module.exports = router;
-
