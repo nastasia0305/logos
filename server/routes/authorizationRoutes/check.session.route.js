@@ -1,11 +1,14 @@
 const router = require('express').Router();
 
-router.get('/getsession', async(req, res) => {
-const { user } = req.session
-const { isLawyer } = req.session
-const newUser = {...user, isLawyer}
-console.log(newUser);
-res.status(200).json(newUser)
-})
+router.get('/getSession', async (req, res) => {
+  const { user } = req.session;
+
+  // В сессии может отсутствовать нужный нам объект пользователя
+  // например после деавторизации
+  // а запросы с клиента на сессию идут даже после деавторизации
+  if (user) {
+    res.status(200).json(user);
+  }
+});
 
 module.exports = router;
