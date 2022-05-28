@@ -1,28 +1,32 @@
-import React from 'react';
+import React from 'react'
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-function Home(props) {
+function Main() {
   const { session } = useSelector(store => store.session)
   const { id } = session
 
   const renderContent = () => {
     if (id) {
-      return <div>Вы в сети! ВаУ!!!</div>
+      return <div className="dialog shadow">
+        <div className="dialog__bar">Новости Logos!</div>
+        <div className="dialog__content">
+          <p>Добро пожаловать!</p>
+          <p>Текст для авторизованный пользователей.</p>
+        </div>
+      </div>
     }
 
-    return <div>
-      <h3>Новости Logos</h3>
-      <p>Добро пожаловать!</p>
-      <p>У нас хорошие новости для новых пользователей!</p>
+    return <div className="dialog shadow">
+      <div className="dialog__bar">Новости Logos!</div>
+      <div className="dialog__content">
+        <p>Добро пожаловать!</p>
+        <p>У нас хорошие новости для новых пользователей!</p>
+      </div>
     </div>
   }
 
-  return (
-    <div>
-      {renderContent()}
-    </div>
-  );
+  return (<div>{renderContent()}</div>)
 }
 
-export default Home;
+export default Main;
