@@ -28,46 +28,54 @@ router.post('/', async (req, res) => {
     if (password.length < 8) {
       res.status(400).json({ message: 'Пароль должен содержать не менее 8 символов' });
     } else if (!hasClient && !hasLawyer && password >= 8) {
-      if (select === 'Юрист') { // Изменить Юрист на то что придет с формы
-        const lawyerResponse = await Lawyer.create({
-          firstname,
-          lastname,
-          fathersname,
-          email,
-          password: hashPassword,
-          city,
-        });
+      switch (select) {
+        case 'lawyer': {
+          const lawyerResponse = await Lawyer.create({
+            firstname,
+            lastname,
+            fathersname,
+            email,
+            password: hashPassword,
+            city,
+          });
 
-        let lawyer;
+          let lawyer;
 
-        // Достаём чистые данные из полученного ответа метода create
-        // с помощью встроенного метода get от модели таблицы
-        if (lawyerResponse && lawyerResponse.get && typeof lawyerResponse.get === 'function') {
-          lawyer = lawyerResponse.get();
+          // Достаём чистые данные из полученного ответа метода create
+          // с помощью встроенного метода get от модели таблицы
+          if (lawyerResponse && lawyerResponse.get && typeof lawyerResponse.get === 'function') {
+            lawyer = lawyerResponse.get();
+          }
+
+          req.session.user = { ...lawyer, isLawyer: true };
+          res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: lawyer });
+
+          break;
         }
+        case 'client':
+        default: {
+          const clientResponse = await Client.create({
+            firstname,
+            lastname,
+            fathersname,
+            email,
+            password: hashPassword,
+            city,
+          });
 
-        req.session.user = { ...lawyer, isLawyer: true };
-        res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: lawyer });
-      } else {
-        const clientResponse = await Client.create({
-          firstname,
-          lastname,
-          fathersname,
-          email,
-          password: hashPassword,
-          city,
-        });
+          let client;
 
-        let client;
+          // Достаём чистые данные из полученного ответа метода create
+          // с помощью встроенного метода get от модели таблицы
+          if (clientResponse && clientResponse.get && typeof clientResponse.get === 'function') {
+            client = clientResponse.get();
+          }
 
-        // Достаём чистые данные из полученного ответа метода create
-        // с помощью встроенного метода get от модели таблицы
-        if (clientResponse && clientResponse.get && typeof clientResponse.get === 'function') {
-          client = clientResponse.get();
+          req.session.user = { ...client, isLawyer: false };
+          res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: client });
+
+          break;
         }
-
-        req.session.user = { ...client, isLawyer: false };
-        res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: client });
       }
     } else {
       res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
