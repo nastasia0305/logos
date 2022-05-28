@@ -1,7 +1,11 @@
 .button {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 12px;
   background: #c2c6ca;
   border: none;
-  padding: 0;
   border-radius: 0;
   outline: none;
   min-height: 32px;

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { registerUser } from '../../redux/thunk/asyncUsers'
 
+import BasicForm from './BasicForm'
+
 function Registration(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -30,16 +32,18 @@ function Registration(props) {
     <div className="dialog shadow">
       <div className="dialog__bar">Регистрация</div>
       <form onSubmit={registration} className="form">
-        <input type="text" className="input" name="firstname" placeholder="Имя" required />
-        <input type="text" className="input" name="lastname" placeholder="Фамилия" required />
-        <input type="text" className="input" name="fathersname" placeholder="Отчество" />
-        <input type="email" className="input" name="email" autoComplete="email" placeholder="E-mail" required />
-        <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
-        <input type="text" className="input" name="city" placeholder="Город" required />
-        <select name="select" defaultValue="client" className="select">
-          <option value="client">Клиент</option>
-          <option value="lawyer">Юрист</option>
-        </select>
+        <BasicForm />
+        <div className="row">
+          <label htmlFor="select" className="label">Роль</label>
+          <select name="select" defaultValue="client" className="select">
+            <option value="client">Клиент</option>
+            <option value="lawyer">Юрист</option>
+          </select>
+        </div>
+        <div className="row">
+          <label htmlFor="password" className="label">Пароль</label>
+          <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
+        </div>
         <button type="submit" className="button shadow">Зарегистрироваться</button>
       </form>
     </div>

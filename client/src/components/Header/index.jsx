@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import Nav from "../Nav";
+import Nav from "../Nav"
 
 function Header() {
   return (
@@ -15,4 +15,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default Header

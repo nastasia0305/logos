@@ -29,4 +29,4 @@ function Main() {
   return (<div>{renderContent()}</div>)
 }
 
-export default Main;
+export default Main

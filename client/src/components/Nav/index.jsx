@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { logoutUser } from '../../redux/thunk/asyncUsers';
+import { logoutUser } from '../../redux/thunk/asyncUsers'
 
 function Nav() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { session } = useSelector(store => store.session)
 
@@ -46,4 +46,4 @@ function Nav() {
   return <nav className="navigation">{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
 }
 
-export default Nav;
+export default Nav

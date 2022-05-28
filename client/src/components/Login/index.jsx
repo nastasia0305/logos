@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux"
+import { useNavigate } from 'react-router-dom'
 
-import { loginUser } from '../../redux/thunk/asyncUsers';
+import { loginUser } from '../../redux/thunk/asyncUsers'
 
 function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const login = event => {
     event.preventDefault()
@@ -26,12 +26,18 @@ function Login() {
     <div className="dialog shadow">
       <div className="dialog__bar">Авторизация</div>
       <form onSubmit={login} className="form">
-        <input type="text" className="input" name="email" autoComplete="email" placeholder="E-mail" required />
-        <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
+        <div className="row">
+          <label htmlFor="email" className="label">E-mail</label>
+          <input type="text" className="input" name="email" autoComplete="email" placeholder="E-mail" required />
+        </div>
+        <div className="row">
+          <label htmlFor="password" className="label">Пароль</label>
+          <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
+        </div>
         <button type="submit" className="button shadow">Войти</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login

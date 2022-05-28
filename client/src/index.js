@@ -11,6 +11,7 @@ import './assets/header.css';
 import './assets/navigation.css';
 import './assets/main.css';
 import './assets/footer.css';
+import './assets/profile.css';
 
 import App from './components/App';
 

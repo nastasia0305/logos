@@ -1,14 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 import { Outlet } from "react-router-dom"
 
-function Home(props) {
-
+function Home() {
   return (
-    <div>
+    <div className="wrapper">
       <Outlet />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

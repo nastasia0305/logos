@@ -35,6 +35,14 @@ h1 {
   padding-bottom: 16px;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 960px;
+  width: 100%;
+}
+
 .dialog {
   display: flex;
   flex-flow: column nowrap;
@@ -62,6 +70,10 @@ h1 {
 
 .dialog__content {
   padding: 8px;
+}
+
+.dialog--full-width {
+  width: 100%;
 }
 
 .shadow {

@@ -1,15 +1,16 @@
 .navigation {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .navigation__list {
   padding: 0;
   list-style: none;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
 }
 
 .navigation__item {
@@ -22,7 +23,8 @@
 }
 
 .navigation__item .link {
-  padding: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   display: flex;
 }
 
