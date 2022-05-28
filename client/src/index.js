@@ -1,10 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { Provider } from 'react-redux'
-import { store } from './redux/store'
 
+import { Provider } from 'react-redux'
+
+import './assets/index.css';
+import './assets/misc.css';
+import './assets/buttons.css';
+import './assets/controls.css';
+import './assets/page.css';
+import './assets/header.css';
+import './assets/navigation.css';
+import './assets/main.css';
+import './assets/footer.css';
+
+import App from './components/App';
+
+import { store } from './redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,4 +23,3 @@ root.render(
     <App />
   </Provider>
 );
-

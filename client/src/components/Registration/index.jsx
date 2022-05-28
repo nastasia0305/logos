@@ -1,28 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import "../Registration/Registration.css";
 import { registerUser } from '../../redux/thunk/asyncUsers'
 
 function Registration(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { session } = useSelector(state => state.session )
-  console.log(session);
-  const handleSubmit = (e) => {
-  e.preventDefault()
-  const data = {
-  firstname: e.target.firstname.value,
-  lastname: e.target.lastname.value,
-  fathersname: e.target.fathersname.value,
-  email: e.target.email.value,
-  password: e.target.password.value,
-  city: e.target.city.value,
-  select: e.target.select.value,
-}
-console.log(data);
-dispatch(registerUser(data))
-navigate('/login')
+
+  // const { session } = useSelector(state => state.session )
+
+  const registration = event => {
+    event.preventDefault()
+    
+    const data = {
+      firstname: event.target.firstname.value,
+      lastname: event.target.lastname.value,
+      fathersname: event.target.fathersname.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      city: event.target.city.value,
+      select: event.target.select.value,
+    }
+    console.log(data)
+    dispatch(registerUser(data))
+    navigate('/login')
   }
   
   return (
@@ -32,7 +33,7 @@ navigate('/login')
           <div className="card">
             <h2 className="card-title text-center">Регистрация</h2>
             <div className="card-body py-md-4">
-              <form _lpchecked="1" onSubmit={handleSubmit}>
+              <form onSubmit={registration}>
                 <div className="form-group">
                   <input
                     type="text"
