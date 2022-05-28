@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Greeting from '../Greeting/Greeting';
+import Greeting from '../Greeting';
 
 function Profile() {
 

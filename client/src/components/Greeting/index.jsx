@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import UpdateProfile from '../UpdateProfile/UpdateProfile';
+import UpdateProfile from '../UpdateProfile';
 function Greeting(props) {
   const { session } = useSelector(store => store.session)
   const navigation = useNavigate()

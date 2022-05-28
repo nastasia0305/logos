@@ -1,23 +1,29 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../../redux/thunk/asyncUsers';
-import Main from '../Main/Main';
 
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+
+import { checkAuth, loginUser } from '../../redux/thunk/asyncUsers';
 
 function Login(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const data = {
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
-console.log(data);
-dispatch(loginUser(data))
-navigate('/profile')
+  const { session } = useSelector(state => state.session);
+
+  const login = event => {
+    event.preventDefault()
+
+    const { target } = event
+
+    dispatch(
+      loginUser({ 
+        email: target.email.value, 
+        password: target.password.value
+      })
+    )
+  
+    navigate('/profile')
   }
   
   return (
@@ -27,7 +33,7 @@ navigate('/profile')
         <div className="card">
           <h2 className="card-title text-center">Вход в аккаунт</h2>
           <div className="card-body py-md-4">
-            <form _lpchecked="1" onSubmit={handleSubmit}>
+            <form onSubmit={login}>
               <div className="form-group">
                 <input
                   type="text"
