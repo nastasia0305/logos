@@ -53,6 +53,7 @@ function Profile() {
   
   return (
     <div className="dialog dialog--full-width">
+      {/* TODO: написать в подобных страницах проверку на наличие сессии, иначе редиректить на главную, пример смотреть на страницах логина и регистрации, функция checkAuth */}
       <div className="dialog__bar">Личный кабинет</div>
       <div className="profile">
         <div className="profile__sidebar">
