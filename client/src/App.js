@@ -9,7 +9,7 @@ import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import Profile from "./components/Profile/Profile";
 import { checkAuthFetch } from './redux/thunk/asyncUsers';
-
+import FeedBackForm from './components/FeedBack/FeedBackForm'
 
 function App() {
   const dispatch = useDispatch();
@@ -18,20 +18,21 @@ function App() {
 
   useEffect(() => {
     dispatch(checkAuthFetch())
-  },[dispatch])
-  
+  }, [dispatch])
+
   return (
     <BrowserRouter>
-    <Nav />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/main" element={<Main />} />
-      <Route path="/registration" element={<Registration />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/logout" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="*"  element={<Error />} />
-    </Routes>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Error />} />
+        <Route path="/feedback" element={<FeedBackForm />} />
+      </Routes>
     </BrowserRouter>
   );
 }

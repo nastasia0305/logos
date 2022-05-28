@@ -17,7 +17,6 @@ const config = (app) => {
   app.use(cors());
   app.use(cors(corsConfig));
   app.use(cookieParser());
-}
+};
 
 module.exports = config;
-
