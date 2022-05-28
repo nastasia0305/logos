@@ -1,13 +1,22 @@
 import React from 'react'
 
-import { useDispatch } from "react-redux"
-import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux"
+import { Navigate, useNavigate } from 'react-router-dom'
 
 import { loginUser } from '../../redux/thunk/asyncUsers'
 
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const { session } = useSelector(store => store.session)
+  const { id } = session
+
+  const checkAuth = () => {
+    if (id) {
+      return <Navigate to="/profile" replace={ true } />
+    }
+  }
 
   const login = event => {
     event.preventDefault()
@@ -24,6 +33,8 @@ function Login() {
   
   return (
     <div className="dialog shadow">
+      {checkAuth()}
+
       <div className="dialog__bar">Авторизация</div>
       <form onSubmit={login} className="form">
         <div className="row">

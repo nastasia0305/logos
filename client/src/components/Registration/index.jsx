@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 import { registerUser } from '../../redux/thunk/asyncUsers'
 
@@ -10,6 +10,15 @@ import BasicForm from './BasicForm'
 function Registration(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const { session } = useSelector(store => store.session)
+  const { id } = session
+
+  const checkAuth = () => {
+    if (id) {
+      return <Navigate to="/profile" replace={ true } />
+    }
+  }
 
   const registration = event => {
     event.preventDefault()
@@ -30,6 +39,8 @@ function Registration(props) {
   
   return (
     <div className="dialog shadow">
+      {checkAuth()}
+
       <div className="dialog__bar">Регистрация</div>
       <form onSubmit={registration} className="form">
         <BasicForm />
