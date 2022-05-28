@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Page({ children }) {
-  return <div className="page">{ children }</div>
+function Layout({ children }) {
+  return <div className="layout">{ children }</div>
 }
 
-export default Page;
+export default Layout;

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Page from '../Layout'
+import Layout from '../Layout'
 import Header from '../Header'
 import Footer from '../Footer'
 import Home from '../Home'
@@ -25,7 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Page>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />}>
             <Route index element={<Main />} />
@@ -35,7 +35,7 @@ function App() {
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
-      </Page>
+      </Layout>
       <Footer />
     </BrowserRouter>
   );

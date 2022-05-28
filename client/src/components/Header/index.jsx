@@ -6,7 +6,7 @@ import Nav from "../Nav";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header shadow">
       <div className="header__content">
         <Link to="/" className="logo">LOGOS</Link>
         <Nav />

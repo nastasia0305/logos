@@ -1,13 +1,13 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
+
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import { registerUser } from '../../redux/thunk/asyncUsers'
 
 function Registration(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  // const { session } = useSelector(state => state.session )
 
   const registration = event => {
     event.preventDefault()
@@ -21,86 +21,29 @@ function Registration(props) {
       city: event.target.city.value,
       select: event.target.select.value,
     }
-    console.log(data)
+
     dispatch(registerUser(data))
-    navigate('/login')
+    navigate('/')
   }
   
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-5">
-          <div className="card">
-            <h2 className="card-title text-center">Регистрация</h2>
-            <div className="card-body py-md-4">
-              <form onSubmit={registration}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="firstname"
-                    placeholder="firstname"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="lastname"
-                    placeholder="lastname"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="fathersname"
-                    placeholder="fathersname"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="email"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="password"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="city"
-                    placeholder="city"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="select"
-                    placeholder="select"
-                  />
-                </div>
-                <div className="d-flex flex-row align-items-center justify-content-between">
-                  <Link to='/login'>Вход</Link>
-                  <button type='submit' className="btn btn-primary">Зарегистрироваться</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="dialog shadow">
+      <div className="dialog__bar">Регистрация</div>
+      <form onSubmit={registration} className="form">
+        <input type="text" className="input" name="firstname" placeholder="Имя" required />
+        <input type="text" className="input" name="lastname" placeholder="Фамилия" required />
+        <input type="text" className="input" name="fathersname" placeholder="Отчество" />
+        <input type="email" className="input" name="email" autoComplete="email" placeholder="E-mail" required />
+        <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
+        <input type="text" className="input" name="city" placeholder="Город" required />
+        <select name="select" defaultValue="client" className="select">
+          <option value="client">Клиент</option>
+          <option value="lawyer">Юрист</option>
+        </select>
+        <button type="submit" className="button shadow">Зарегистрироваться</button>
+      </form>
     </div>
-  );
+  )
 }
 
-export default Registration;
+export default Registration
