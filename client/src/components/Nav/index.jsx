@@ -43,7 +43,7 @@ function Nav() {
     </ul>
   }
 
-  return <nav className="navigation">{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
+  return <nav className="navigation">{ session?.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
 }
 
 export default Nav
