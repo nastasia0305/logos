@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
       city,
       select, // ?? Выбор роли, Юрист либо Клиент
     } = req.body;
-      console.log(req.body)
+    console.log(req.body)
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
     // Здесь можно не очищать данные, ответ может быть либо null либо нет
@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
       res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
     }
   } catch (error) {
-    res.status(401).json({ message: 'Ошибка при регистрации' });
+    res.status(400).json({ message: 'Ошибка при регистрации' });
   }
 });
 
