@@ -4,9 +4,23 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function Greeting() {
+  const navigation = useNavigate()
+
   const { session } = useSelector(store => store.session)
   const { isLawyer } = session
-  const navigation = useNavigate()
+
+  const renderLawyerButton = () => {
+    if (isLawyer) {
+      return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+    }
+  }
+  
+  const renderButtons = () => {
+    return <div className="row row--right">
+      <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
+      {renderLawyerButton()}
+    </div>
+  }
 
   return (
     <div>
@@ -19,15 +33,8 @@ function Greeting() {
 
       <b className="row row--center">Добро пожаловать!</b>
 
-      <div className="row row--right">
-        <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
-      </div>
-
-      {isLawyer ? <div className="row row--right">
-        <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
-      </div> : ''}
+      {renderButtons()}
     </div>
-    
   )
 }
 
