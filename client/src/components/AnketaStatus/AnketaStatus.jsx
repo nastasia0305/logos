@@ -15,7 +15,8 @@ function AnketaStatus(props) {
         <div className="supAnswerInp">
           <div class="field-row">
             <input id="radio5" type="radio" name="first-example" />
-            <label htmlFor="radio5">Разовый</label>
+            <label htmlFor="radio5">Регулярное
+              сотрудничество</label>
           </div>
         </div>
         <div className="supAnswerInp">

@@ -10,9 +10,9 @@ import TakeOrder from '../TakeOrder'
 
 function Profile() {
   const { session } = useSelector(store => store.session)
-
+  const { support } = useSelector(store => store.support)
+  const { message } = support
   const [state, setState] = useState(1)
-  console.log("🚀 ~ Profile ~ state", state)
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -36,7 +36,7 @@ function Profile() {
         return <Chats />
       }
       case 3: {
-        return <Support />
+        return message ? <h4>{message}</h4> : <Support />
       }
       case 4: {
         return <RequestLawyer />
