@@ -19,7 +19,6 @@ function UpdateProfile() {
       lastname: event.target.lastname.value,
       fathersname: event.target.fathersname.value,
       email: event.target.email.value,
-      password: event.target.password.value,
       city: event.target.city.value,
     }
 
