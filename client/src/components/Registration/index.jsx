@@ -34,7 +34,7 @@ function Registration(props) {
     }
    
     dispatch(registerUser(data))
-    console.log(session)
+  
     navigate('/profile')
   }
   

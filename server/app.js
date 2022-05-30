@@ -17,7 +17,7 @@ app.use('/logout', logoutRouter);
 
 app.use('/', sessionRouter);
 app.use('/support', require('./routes/support.routes'));
-=======
+
 app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter)
 

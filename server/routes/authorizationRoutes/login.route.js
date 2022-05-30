@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         req.session.user = { ...client, isLawyer: false };
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          user: client,
+          user: req.session.user,
         });
       } else {
         res.status(401).json({
@@ -41,9 +41,10 @@ router.post('/', async (req, res) => {
 
       if (passwordValidation) {
         req.session.user = { ...lawyer, isLawyer: true };
+       
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          user: lawyer,
+          user: req.session.user,
         });
       } else {
         res.status(401).json({
