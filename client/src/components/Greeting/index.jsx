@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Greeting() {
   const { session } = useSelector(store => store.session)
-  
+  const { isLawyer } = session
   const navigation = useNavigate()
 
   return (
@@ -22,7 +22,12 @@ function Greeting() {
       <div className="row row--right">
         <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
       </div>
+
+      {isLawyer ? <div className="row row--right">
+        <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+      </div> : ''}
     </div>
+    
   )
 }
 

@@ -14,6 +14,7 @@ import Error from '../Error'
 import Profile from '../Profile'
 import UpdateProfile from '../UpdateProfile'
 import Chats from '../Chats'
+import ConfirmEducation from '../ConfirmEducation'
 
 import { checkAuth } from '../../redux/thunk/asyncUsers'
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="profile" element={<Profile />} />
             <Route path="updateProfile" element={<UpdateProfile />} />
+            <Route path="confirmEducation" element={<ConfirmEducation />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>

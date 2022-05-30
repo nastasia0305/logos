@@ -1,4 +1,4 @@
-const initialState = { session: {} }
+const initialState = { session: {},  }
 
 export const sessionsReducer = (state = initialState, action) => {
   switch (action.type) {
