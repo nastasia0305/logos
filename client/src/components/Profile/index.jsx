@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Chats from '../Chats'
 import Greeting from '../Greeting'
 import Support from '../Support'
 import RequestLawyer from '../RequestLawyer'
 import TakeOrder from '../TakeOrder'
+import { getMessages } from '../../redux/thunk/asyncChats'
 
 function Profile() {
   const { session } = useSelector(store => store.session)
   const { support } = useSelector(store => store.support)
+  const dispatch = useDispatch();
   const { message } = support
   const [state, setState] = useState(1)
+  
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -51,6 +54,10 @@ function Profile() {
       }
     }
   }
+
+  useEffect(() => {
+    dispatch(getMessages())
+  }, [dispatch])
 
   return (
     <div className="dialog dialog--full-width">
