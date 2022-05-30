@@ -1,0 +1,18 @@
+.profile {
+  padding: 16px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 200px 1fr;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.profile__sidebar {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.profile__button--active {
+  box-shadow: 0.5px 0.5px 0 0.5px black, inset 1px 1px black, inset -1px -1px #85898d, inset 2px 2px #85898d;
+  font-weight: bold;
+}

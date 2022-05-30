@@ -1,0 +1,81 @@
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row--center {
+  justify-content: center;
+}
+.row--between {
+  justify-content: space-between;
+}
+.row--right {
+  justify-content: flex-end;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.col--center {
+  align-items: center;
+}
+
+.error {
+  color: #ff0081;
+}
+
+.link {
+  color: #010081;
+  text-decoration: none;
+}
+
+h1 {
+  padding-bottom: 16px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 960px;
+  width: 100%;
+}
+
+.dialog {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background: #c2c6ca;
+  font-size: 12px;
+  -webkit-font-smoothing: none;
+  box-shadow: 0.5px 0.5px 0 0.5px black, inset 1px 1px #C2C6CA, inset -1px -1px #85898d, inset 2px 2px white;
+}
+
+.dialog__bar {
+  margin-top: 3px;
+  padding-left: 4px;
+  background: #00a;
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 23px;
+  width: calc(100% - 7px);
+}
+
+.dialog__content {
+  padding: 8px;
+}
+
+.dialog--full-width {
+  width: 100%;
+}
+
+.shadow {
+  box-shadow: 0.5px 0.5px 0 0.5px black, inset 1px 1px white, inset -1px -1px #85898d;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Error (props) {
   return (
@@ -6,7 +6,7 @@ function Error (props) {
       <h1>Ошибка 404.</h1>
       <h2>Страница не найдена</h2>
     </div>
-  );
+  )
 }
 
-export default Error;
+export default Error

@@ -7,18 +7,29 @@ router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const client = await Client.findOne({ where: { email } });
-    const lawyer = await Lawyer.findOne({ where: { email } });
+    const clientResponse = await Client.findOne({ where: { email } });
+    const lawyerResponse = await Lawyer.findOne({ where: { email } });
+
+    let client;
+    let lawyer;
+
+    // Достаём чистые данные из полученного ответа метода findOne
+    // с помощью встроенного метода get от модели таблицы
+    if (clientResponse && clientResponse.get && typeof clientResponse.get === 'function') {
+      client = clientResponse.get();
+    }
+    if (lawyerResponse && lawyerResponse.get && typeof lawyerResponse.get === 'function') {
+      lawyer = lawyerResponse.get();
+    }
 
     if (client) {
-      const isPassValide = await bcrypt.compare(password, client.password);
+      const passwordValidation = await bcrypt.compare(password, client.password);
 
-      if (isPassValide) {
-        req.session.user = client;
-        req.session.isLawyer = false;
+      if (passwordValidation) {
+        req.session.user = { ...client, isLawyer: false };
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          client,
+          user: client,
         });
       } else {
         res.status(401).json({
@@ -26,14 +37,13 @@ router.post('/', async (req, res) => {
         });
       }
     } else if (lawyer) {
-      const isPassValide2 = await bcrypt.compare(password, lawyer.password);
+      const passwordValidation = await bcrypt.compare(password, lawyer.password);
 
-      if (isPassValide2) {
-        req.session.user = lawyer;
-        req.session.isLawyer = true;
+      if (passwordValidation) {
+        req.session.user = { ...lawyer, isLawyer: true };
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
-          lawyer,
+          user: lawyer,
         });
       } else {
         res.status(401).json({
