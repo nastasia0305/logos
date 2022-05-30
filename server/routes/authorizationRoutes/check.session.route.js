@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/getSession', async (req, res) => {
+router.get('/', async (req, res) => {
   const { user } = req.session;
 
   // В сессии может отсутствовать нужный нам объект пользователя

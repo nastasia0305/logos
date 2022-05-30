@@ -39,17 +39,16 @@ export const loginUser = (data) => {
   }
 }
 
-// TODO: написать под это дело бэкенд
 export const updateUser = (data) => {
   return (dispatch) => {
-    fetch('/user', {
+    fetch('/updateProfile', {
       headers,
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(data),
     })
     .then(response => response.json())
     .then(({ user }) => {
-      dispatch({ type: 'CHECK_SESSION', payload: user })
+      dispatch({ type: 'UPDATE_PROFILE', payload: user })
     })
     .catch(error => console.error(error))
   }
