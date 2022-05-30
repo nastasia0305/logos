@@ -19,7 +19,7 @@ export const registerUser = (data) => {
       body: JSON.stringify(data),
     })
     .then(response => response.json())
-    .then(data => dispatch({ type: 'REGISTER_USER', payload: data }))
+    .then(data => dispatch({ type: 'CHECK_SESSION', payload: data }))
     .catch(error => console.error(error))
   }
 }
