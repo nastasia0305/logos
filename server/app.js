@@ -14,8 +14,13 @@ config(app);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+
+app.use('/', sessionRouter);
+app.use('/support', require('./routes/support.routes'));
+=======
 app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter)
+
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);

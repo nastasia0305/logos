@@ -15,9 +15,9 @@ router.post('/', async (req, res) => {
       email,
       password,
       city,
-      select, // ?? Выбор роли, Юрист либо Клиент
+      select,
     } = req.body;
-    console.log(req.body)
+    console.log(req.body);
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
     // Здесь можно не очищать данные, ответ может быть либо null либо нет

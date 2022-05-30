@@ -1,0 +1,22 @@
+.window-body {
+  font-size: 18px !important;
+}
+
+.supAnswer {
+  display: flex;
+  /* flex-direction: column; */
+  flex: 0 1 49%;
+}
+
+.supAnswerInp {
+  margin-bottom: 10px;
+  font-size: 18px !important;
+}
+
+/* .caseWrap {
+  display: flex;
+} */
+
+/* .left {
+  flex: 0 1 49%;
+} */
