@@ -10,6 +10,7 @@ export const sessionsReducer = (state = initialState, action) => {
       return initialState
     }
 
+
     default: {
       return state
     }
