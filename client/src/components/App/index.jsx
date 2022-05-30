@@ -20,6 +20,7 @@ function App() {
   const dispatch = useDispatch()
 
   const { session } = useSelector(state => state.session)
+  console.log(session)
   
   useEffect(() => { dispatch(checkAuth()) }, [ dispatch, session.id ])
 

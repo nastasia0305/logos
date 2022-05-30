@@ -42,7 +42,7 @@ function BasicForm() {
       </div>
       <div className="row">
         <label htmlFor="city" className="label">Город</label>
-        <select name="select" defaultValue={cities[0]} className="select">
+        <select name="city" defaultValue={cities[0]} className="select">
           {
             cities.map((city, index) => {
               return <option value={city} key={'city-' + index}>{city}</option>

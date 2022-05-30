@@ -14,7 +14,7 @@ export const checkAuth = () => {
 export const registerUser = (data) => {
   return (dispatch) => {
     fetch('/registration', {
-      headers,
+      headers: {'content-type': 'application/json'},
       method: 'POST',
       body: JSON.stringify(data),
     })

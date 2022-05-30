@@ -32,7 +32,7 @@ function Registration(props) {
       city: event.target.city.value,
       select: event.target.select.value,
     }
-
+   
     dispatch(registerUser(data))
     navigate('/')
   }
