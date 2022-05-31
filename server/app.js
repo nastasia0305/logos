@@ -8,7 +8,8 @@ const registrationRouter = require('./routes/authorizationRoutes/registration.ro
 const loginRouter = require('./routes/authorizationRoutes/login.route');
 const logoutRouter = require('./routes/authorizationRoutes/logout.route');
 const sessionRouter = require('./routes/authorizationRoutes/check.session.route');
-const updateProfileRouter = require('./routes/updateRoutes/update.profile.route')
+const updateProfileRouter = require('./routes/updateRoutes/update.profile.route');
+const chatRouter = require('./routes/chatRoutes/chat.route')
 
 config(app);
 app.use('/registration', registrationRouter);
@@ -19,7 +20,9 @@ app.use('/', sessionRouter);
 app.use('/support', require('./routes/support.routes'));
 
 app.use('/getsession', sessionRouter);
-app.use('/updateProfile', updateProfileRouter)
+app.use('/updateProfile', updateProfileRouter);
+
+app.use('/chats', chatRouter);
 
 
 app.listen(PORT, () => {
