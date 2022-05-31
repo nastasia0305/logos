@@ -7,18 +7,18 @@ function Greeting() {
   const navigation = useNavigate()
 
   const { session } = useSelector(store => store.session)
-
+  const { isLawyer } = session
   console.log(session)
-  // const renderLawyerButton = () => {
-  //   // if (isLawyer) {
-  //     /// return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
-  //   }
-  // }
+  const renderLawyerButton = () => {
+    if (isLawyer) {
+       return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+    }
+  }
   
   const renderButtons = () => {
     return <div className="row row--right">
       <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
-      {/* {renderLawyerButton()} */}
+      {renderLawyerButton()}
     </div>
   }
 
