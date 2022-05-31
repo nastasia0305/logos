@@ -23,10 +23,8 @@ function App() {
 
   const { session } = useSelector((state) => state.session);
 
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch, session?.id]);
-  
+  const { session } = useSelector(state => state.session)
+  console.log(session)
 
   return (
     <BrowserRouter>

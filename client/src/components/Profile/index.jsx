@@ -26,9 +26,9 @@ function Profile() {
   }
 
   const renderButtonBySession = () => {
-    if (session.isLawyer) {
-      return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
-    }
+    // if (session.isLawyer) {
+    //   return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
+    // }
 
     return <button onClick={() => setState(4)} className={getButtonClassName(4)}>Запросить юриста</button>
   }

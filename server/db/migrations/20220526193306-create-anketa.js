@@ -23,29 +23,18 @@ module.exports = {
       statusClient: {
         type: Sequelize.TEXT,
       },
-      help_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'KindOfHelps',
-          key: 'id',
-        },
+      help: {
+        type: Sequelize.TEXT,
       },
-      case_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Cases',
-          key: 'id',
-        },
+      case: {
+        type: Sequelize.TEXT,
       },
-      service_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'KindOfServices',
-          key: 'id',
-        },
+      service: {
+        type: Sequelize.TEXT,
       },
       condition: {
         type: Sequelize.TEXT,
+        defaultValue: 'отправлено',
       },
       lawyer_id: {
         type: Sequelize.INTEGER,
