@@ -37,7 +37,7 @@ function Support(props) {
               <input className="input-at" type="text" name="supportCall" placeholder="Ваш вопрос" />
               <span className="focus-input-at"></span>
             </div>
-            <button id="submit-at">Отправить</button>
+            <button id="submit-at" className='button shadow'>Отправить</button>
           </div>
           <div className="result-at"></div>
         </div>

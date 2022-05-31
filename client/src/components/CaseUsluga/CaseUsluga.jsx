@@ -1,4 +1,5 @@
 import React from 'react';
+import CaseCheckbox2 from '../CaseCheckbox/CaseCheckbox2';
 
 export default CaseUsluga;
 const caseUsluga = [
@@ -16,8 +17,20 @@ const caseUsluga = [
 
 function CaseUsluga(props) {
   return (
-    <div>
+    <>
+      <h4>Предполагаемая услуга :</h4> <br />
+      <form >
+        <div className="kindOfHelp">
 
-    </div>
+          <div className="supWrap">
+            {caseUsluga.map((elem, idx) => <CaseCheckbox2 key={elem} value={elem} idx={idx + 23} />)}
+          </div>
+          <button type='submit' className='button shadow' >OK</button>
+        </div>
+      </form>
+
+    </>
+
+
   );
 }

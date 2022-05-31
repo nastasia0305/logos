@@ -12,19 +12,19 @@ function Anketa(props) {
         </div>
       </div>
       <div className="window-body">
-        <p>Если у вас нет информации об особенностях вашей ситуации, система сама подберет Вам юриста по запросу общего характера.<hr /> Можете ли Вы охарактеризовать свою проблему?</p>
+        <p>Если у вас нет информации об особенностях вашей ситуации, система сама подберет Вам юриста по запросу общего характера. Можете ли Вы охарактеризовать свою проблему?</p>
         <fieldset>
           <div class="field-row">
             <input id="radio10" type="radio" name="fieldset-example"
               onChange={() => setValue('yes')}
             />
-            <label htmlFor="radio10">Да, могу попробовать</label>
+            <label htmlFor="radio10">  Да, могу попробовать</label>
           </div>
           <div class="field-row">
             <input id="radio11" type="radio" name="fieldset-example"
               onChange={() => setValue('no')}
             />
-            <label htmlFor="radio11">Нет, затрудняюсь</label>
+            <label htmlFor="radio11">  Нет, затрудняюсь</label>
           </div>
         </fieldset>
         {value === 'yes' ? <AnketaStatus /> : ''}
