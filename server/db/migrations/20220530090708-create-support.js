@@ -28,6 +28,7 @@ module.exports = {
         },
       },
       client_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Clients',

@@ -7,24 +7,24 @@ function Greeting() {
   const navigation = useNavigate()
 
   const { session } = useSelector(store => store.session)
-  const { isLawyer } = session
 
-  const renderLawyerButton = () => {
-    if (isLawyer) {
-      return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
-    }
-  }
+  console.log(session)
+  // const renderLawyerButton = () => {
+  //   // if (isLawyer) {
+  //     /// return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+  //   }
+  // }
   
   const renderButtons = () => {
     return <div className="row row--right">
       <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
-      {renderLawyerButton()}
+      {/* {renderLawyerButton()} */}
     </div>
   }
 
   return (
     <div>
-      <h2 className="row row--center">Уважаемый(-ая) {session.firstname} {session.fathersname ? session.fathersname : ''}!</h2>
+      <h2 className="row row--center">Уважаемый(-ая) {session?.firstname} {session?.fathersname ? session?.fathersname : ''}!</h2>
 
       <br />
       <p>Здесь Вы можете найти юриста и работать с ним в режиме реального времени.</p>

@@ -9,8 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({ Anketa, Support, StatusAnket }) {
       // define association here
+      Lawyer.hasMany(Anketa, { foreignKey: 'lawyer_id' });
+      Lawyer.hasMany(Support, { foreignKey: 'lawyer_id' });
+      Lawyer.belongsToMany(Anketa, { through: StatusAnket, foreignKey: 'lawyer_id', otherKey: 'anketa_id' });
     }
   }
   Lawyer.init({
@@ -38,6 +41,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
+    isLawyer: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    help: {
+      type: DataTypes.TEXT,
+    },
+    case: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+    service: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+
     educationLevel: {
       type: DataTypes.TEXT,
     },
@@ -58,7 +76,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 5,
     },
     isValidate: {
+      allowNull: false,
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   }, {
     sequelize,
