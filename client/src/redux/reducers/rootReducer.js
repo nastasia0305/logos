@@ -7,6 +7,7 @@ import { anketaReducer } from './anketaReducer'
 
 import { chatReducer } from './chatReducer'
 
+import { adminReducer } from './adminReducer'
 
 export const rootReducer = combineReducers({
   session: sessionsReducer,
@@ -16,4 +17,5 @@ export const rootReducer = combineReducers({
 
   chat: chatReducer,
 
+  admin: adminReducer
 })
