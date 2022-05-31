@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { Client } = require('../../db/models');
 const { Lawyer } = require('../../db/models');
+const { Admin } = require('../../db/models');
 
 router.post('/', async (req, res) => {
   try {
@@ -9,9 +10,11 @@ router.post('/', async (req, res) => {
 
     const clientResponse = await Client.findOne({ where: { email } });
     const lawyerResponse = await Lawyer.findOne({ where: { email } });
+    const adminResponse = await Admin.findOne({ where: { email } });
 
     let client;
     let lawyer;
+    let admin;
 
     // Достаём чистые данные из полученного ответа метода findOne
     // с помощью встроенного метода get от модели таблицы
@@ -20,6 +23,9 @@ router.post('/', async (req, res) => {
     }
     if (lawyerResponse && lawyerResponse.get && typeof lawyerResponse.get === 'function') {
       lawyer = lawyerResponse.get();
+    }
+    if (adminResponse && adminResponse.get && typeof adminResponse.get === 'function') {
+      admin = adminResponse.get();
     }
 
     if (client) {
@@ -41,7 +47,7 @@ router.post('/', async (req, res) => {
 
       if (passwordValidation) {
         req.session.user = lawyer;
-       
+
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
           user: req.session.user,
@@ -51,6 +57,13 @@ router.post('/', async (req, res) => {
           message: 'Некорректные данные',
         });
       }
+    } else if (admin) {
+      req.session.user = admin;
+
+      res.status(201).json({
+        message: 'Вы вошли в аккаунт Администратора',
+        user: req.session.user,
+      });
     } else {
       res.status(404).json({
         message: 'Такого пользователя не существует',

@@ -1,6 +1,7 @@
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Admin extends Model {
     /**
@@ -13,13 +14,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Admin.init({
-    name: {
+    email: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
     password: {
       allowNull: false,
       type: DataTypes.TEXT,
+    },
+    isLawyer: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    isAdmin: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
   }, {
     sequelize,

@@ -7,13 +7,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      email: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
       password: {
         allowNull: false,
         type: Sequelize.TEXT,
+      },
+      isLawyer: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      isAdmin: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
       },
       createdAt: {
         allowNull: false,

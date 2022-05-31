@@ -10,8 +10,10 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Admins', [{
-      name: 'admin',
+      email: 'admin@test.ru',
       password: 'admin',
+      isLawyer: false,
+      isAdmin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
