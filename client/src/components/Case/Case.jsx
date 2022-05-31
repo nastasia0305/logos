@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import CaseCheckbox from '../CaseCheckbox/CaseCheckbox';
+import CaseUsluga from '../CaseUsluga/CaseUsluga';
 
 const caseData = [
   'Уголовное',
-  'Арбитражное',
   'Арбитражное',
   'Налоговое',
   'Бюджетное',
@@ -26,11 +26,19 @@ function Case(props) {
 
   return (
     <>
-      <h4>Характер дела :</h4>
-      {caseData.map((elem, idx) => <CaseCheckbox key={idx} value={elem} idx={idx + 7} />)}
-      <button onClick={() => setState('next')}>OK</button>
-      {/* {state === 'next' ? <KindOfHelp /> : ''} */}
-
+      {state === 'next'
+        ? <CaseUsluga />
+        :
+        <form >
+          <div className='kindOfHelp'>
+            <h4>Характер дела :</h4> <br />
+            <div className="supWrap">
+              {caseData.map((elem, idx) => <CaseCheckbox key={elem} value={elem} idx={idx + 7} />)}
+            </div>
+            <button type='submit' className='button shadow' onClick={() => setState('next')}>OK</button>  <br />
+          </div>
+        </form>
+      }
     </>
   );
 }

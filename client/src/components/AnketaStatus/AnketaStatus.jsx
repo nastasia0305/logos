@@ -5,37 +5,56 @@ function AnketaStatus(props) {
   const [state, setState] = useState('')
   return (
     <>
-      <div className="supAnswer">
-        <div className="supAnswerInp">
-          <div class="field-row">
-            <input id="radio5" type="radio" name="first-example" />
-            <label htmlFor="radio5">Разовый</label>
-          </div>
-        </div>
-        <div className="supAnswerInp">
-          <div class="field-row">
-            <input id="radio5" type="radio" name="first-example" />
-            <label htmlFor="radio5">Регулярное
-              сотрудничество</label>
-          </div>
-        </div>
-        <div className="supAnswerInp">
-          <input className='allInp' type="checkbox" id="example3" />
-          <label for="example3">Лицо без гражданства</label>
-        </div>
-        <div className="supAnswerInp">
-          <input className='allInp' type="checkbox" id="example4" />
-          <label for="example4">ИП</label>
-        </div>
-        <div className="supAnswerInp">
-          <input className='allInp' type="checkbox" id="example5" />
-          <label for="example5">ЮЛ</label>
-        </div>
-      </div>
-      <button onClick={() => setState('next')}>OK</button>
-      {state === 'next' ? <KindOfHelp /> : ''}
 
+      {state === 'next'
+        ? <KindOfHelp />
+        :
+        <form >
+          <div>
+            <div className="supAnswer">
+              <h4>Статус</h4> <br />
+              <div className="supAnswerInp">
+                <div className="field-row">
+                  <input id="radio5" type="radio" name="first-example" />
+                  <label htmlFor="radio5"> Гражданин</label>
+                </div>
+              </div>
+              <div className="supAnswerInp">
+                <div className="field-row">
+                  <input id="radio5" type="radio" name="first-example" />
+                  <label htmlFor="radio5"> Гражданин иностранного государства</label>
+                </div>
+              </div>
+
+              <div className="supAnswerInp">
+                <div className="field-row">
+                  <input id="radio5" type="radio" name="first-example" />
+                  <label htmlFor="radio5"> Лицо без гражданства</label>
+                </div>
+              </div>
+
+              <div className="supAnswerInp">
+                <div className="field-row">
+                  <input id="radio5" type="radio" name="first-example" />
+                  <label htmlFor="radio5"> ИП</label>
+                </div>
+              </div>
+
+              <div className="supAnswerInp">
+                <div className="field-row">
+                  <input id="radio5" type="radio" name="first-example" />
+                  <label htmlFor="radio5"> ЮЛ</label>
+                </div>
+              </div>
+              <button type='submit' className='button shadow' onClick={() => setState('next')}>OK</button>
+            </div>
+          </div>
+        </form>
+      }
     </>
+
+
+
   );
 }
 
