@@ -25,19 +25,12 @@ function Profile() {
   }
 
   const renderButtonBySession = () => {
-<<<<<<< HEAD
     if (isLawyer) {
       if (isValidate) {
         return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
       }
       return  <button onClick={() => setState(5)} className={getButtonClassName(5)} disabled>Взять заказ</button>
     }
-=======
-    if (session.isLawyer) {
-      return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
-    } 
-
->>>>>>> 7adad04cc5c14acf338c32d3b219362fb4ea201d
     return <button onClick={() => setState(4)} className={getButtonClassName(4)}>Запросить юриста</button>
   }
 
