@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
       const passwordValidation = await bcrypt.compare(password, client.password);
 
       if (passwordValidation) {
-        req.session.user = { ...client, isLawyer: false };
+        req.session.user = client;
         res.status(201).json({
           message: 'Вы вошли в аккаунт',
           user: req.session.user,
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
       const passwordValidation = await bcrypt.compare(password, lawyer.password);
 
       if (passwordValidation) {
-        req.session.user = { ...lawyer, isLawyer: true };
+        req.session.user = lawyer;
        
         res.status(201).json({
           message: 'Вы вошли в аккаунт',

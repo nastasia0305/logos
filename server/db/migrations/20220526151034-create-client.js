@@ -32,8 +32,14 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       rating: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         defaultValue: 5,
+      },
+      isLawyer: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
