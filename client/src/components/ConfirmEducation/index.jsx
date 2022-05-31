@@ -85,7 +85,7 @@ function ConfirmEducation() {
           <label htmlFor="employeBook" className="label">Трудовая книжка</label>
           <input type="file" className="input" name="employeBook" />
         </div>
-        <button type="submit" className="button shadow">Оставить заявку</button>
+        <button type="submit" className="button shadow">Отправить на рассмотрение</button>
       </form>
     </div>
   )
