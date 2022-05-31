@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Chats from '../Chats'
 import Greeting from '../Greeting'
@@ -14,6 +14,7 @@ function Profile() {
   const { support } = useSelector(store => store.support)
   const { message } = support
   const [state, setState] = useState(1)
+  
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -24,12 +25,19 @@ function Profile() {
   }
 
   const renderButtonBySession = () => {
+<<<<<<< HEAD
     if (isLawyer) {
       if (isValidate) {
         return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
       }
       return  <button onClick={() => setState(5)} className={getButtonClassName(5)} disabled>Взять заказ</button>
     }
+=======
+    if (session.isLawyer) {
+      return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
+    } 
+
+>>>>>>> 7adad04cc5c14acf338c32d3b219362fb4ea201d
     return <button onClick={() => setState(4)} className={getButtonClassName(4)}>Запросить юриста</button>
   }
 
