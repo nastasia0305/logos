@@ -13,7 +13,6 @@ import Login from '../Login'
 import Error from '../Error'
 import Profile from '../Profile'
 import UpdateProfile from '../UpdateProfile'
-import Chats from '../Chats'
 import ConfirmEducation from '../ConfirmEducation'
 
 import { checkAuth } from '../../redux/thunk/asyncUsers'
@@ -23,7 +22,11 @@ function App() {
 
   const { session } = useSelector(state => state.session)
 
+
   useEffect(() => { dispatch(checkAuth()) }, [dispatch, session?.id])
+
+  
+
 
   return (
     <BrowserRouter>
