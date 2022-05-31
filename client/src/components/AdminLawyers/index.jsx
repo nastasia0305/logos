@@ -14,6 +14,17 @@ function AdminLawyers() {
     dispatch(getLawyers())
   }
 
+  const renderHeader = () => {
+    return <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th></th>
+      </tr>
+    </thead>
+  }
+
   const renderItem = ({id, firstname, lastname, fathersname}) => {
     return <tr key={'lawyer-' + id}>
       <td className="text--center">{firstname}</td>
@@ -27,15 +38,6 @@ function AdminLawyers() {
 
   const renderList = () => {
     return <tbody>{lawyers.map(lawyer => renderItem(lawyer))}</tbody>
-  }
-
-  const renderHeader = () => {
-    return <tr>
-      <th>Имя</th>
-      <th>Фамилия</th>
-      <th>Отчество</th>
-      <th></th>
-    </tr>
   }
 
   return (
