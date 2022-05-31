@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
-const { Client } = require('../../db/models');
-const { Lawyer } = require('../../db/models');
+const { Client } = require('../../db/models')
+const { Lawyer } = require('../../db/models')
 
 const saltRounds = 10;
 
@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
       city,
       select,
     } = req.body;
-    console.log(req.body);
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
     // Здесь можно не очищать данные, ответ может быть либо null либо нет
     // достаточно привести его к булевому в if
-    const hasClient = await Client.findOne({ where: { email } });
     const hasLawyer = await Lawyer.findOne({ where: { email } });
+    const hasClient = await Client.findOne({ where: { email } });
+    
 
     if (password.length < 8) {
       res.status(400).json({ message: 'Пароль должен содержать не менее 8 символов' });
@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
             email,
             password: hashPassword,
             city,
+            isLawyer: true,
           });
 
           let lawyer;
@@ -46,8 +47,7 @@ router.post('/', async (req, res) => {
           if (lawyerResponse && lawyerResponse.get && typeof lawyerResponse.get === 'function') {
             lawyer = lawyerResponse.get();
           }
-
-          req.session.user = { ...lawyer, isLawyer: true };
+          req.session.user = lawyer;
           res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: lawyer });
 
           break;
@@ -61,6 +61,7 @@ router.post('/', async (req, res) => {
             email,
             password: hashPassword,
             city,
+            isLawyer: false,
           });
 
           let client;
@@ -71,7 +72,7 @@ router.post('/', async (req, res) => {
             client = clientResponse.get();
           }
 
-          req.session.user = { ...client, isLawyer: false };
+          req.session.user = client;
           res.status(201).json({ message: 'Пользователь успешно зарегистрирован', user: client });
 
           break;
@@ -81,6 +82,7 @@ router.post('/', async (req, res) => {
       res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
     }
   } catch (error) {
+    console.error(error);
     res.status(400).json({ message: 'Ошибка при регистрации' });
   }
 });

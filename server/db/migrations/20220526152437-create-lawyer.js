@@ -31,6 +31,20 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      isLawyer: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
+      help: {
+        type: Sequelize.TEXT,
+      },
+      case: {
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+      },
+      service: {
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+      },
       educationLevel: {
         type: Sequelize.TEXT,
       },
@@ -51,7 +65,9 @@ module.exports = {
         defaultValue: 5,
       },
       isValidate: {
+        allowNull: false,
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
