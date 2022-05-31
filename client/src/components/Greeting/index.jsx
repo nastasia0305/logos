@@ -8,7 +8,6 @@ function Greeting() {
 
   const { session } = useSelector(store => store.session)
 
-  console.log(session)
   // const renderLawyerButton = () => {
   //   // if (isLawyer) {
   //     /// return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
