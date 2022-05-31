@@ -1,10 +1,10 @@
 import React from 'react';
 
-function CaseCheckbox({ idx, value }) {
+function CaseCheckbox({ idx, value, name }) {
   return (
     <div className="supAnswer">
       <div className="supAnswerInp">
-        <input className='cb pristine' name='characterOfCase' type="checkbox" id={`example${idx}`} value={`${value}`} />
+        <input className='cb pristine' name={name.case} type="radio" value={`${value}`} />
         <label className='cb-label' htmlFor={`example${idx}`} > {value}</label>
       </div>
     </div >

@@ -16,13 +16,13 @@ function Registration(props) {
 
   const checkAuth = () => {
     if (id) {
-      return <Navigate to="/profile" replace={ true } />
+      return <Navigate to="/profile" replace={true} />
     }
   }
 
   const registration = event => {
     event.preventDefault()
-    
+
     const data = {
       firstname: event.target.firstname.value,
       lastname: event.target.lastname.value,
@@ -32,12 +32,12 @@ function Registration(props) {
       city: event.target.city.value,
       select: event.target.select.value,
     }
-   
+
     dispatch(registerUser(data))
-  
+
     navigate('/profile')
   }
-  
+
   return (
     <div className="dialog shadow">
       {checkAuth()}

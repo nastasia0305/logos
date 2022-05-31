@@ -12,9 +12,9 @@ import './assets/navigation.css';
 import './assets/main.css';
 import './assets/footer.css';
 import './assets/profile.css';
-// import './assets/anketa.css';
-// import './assets/support.css';
-// import './assets/feedback.css';
+import './assets/anketa.css';
+import './assets/support.css';
+import './assets/feedback.css';
 
 import App from './components/App';
 

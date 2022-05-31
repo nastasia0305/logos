@@ -9,12 +9,20 @@ function Greeting() {
   const { session } = useSelector(store => store.session)
   const { isValidate } = session
 
-  
+
+  // const renderLawyerButton = () => {
+  //   // if (isLawyer) {
+  //     /// return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+  //   }
+  // }
+
+ 
   const renderLawyerButton = () => {
     if (isValidate ===  false) {
       return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
     }
   }
+
   
   const renderButtons = () => {
     return <div className="row row--right">
