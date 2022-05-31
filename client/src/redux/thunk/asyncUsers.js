@@ -54,6 +54,21 @@ export const updateUser = (data) => {
   }
 }
 
+export const validateLawyer = (data) => {
+  return (dispatch) => {
+    fetch('/validateLawyer', {
+      headers,
+      method: 'PUT',
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then((data) => {
+      dispatch({ type: 'VALIDATE_LAWYER', payload: data })
+    })
+    .catch(error => console.error(error))
+  }
+}
+
 export const logoutUser = () => {
   return (dispatch) => {
     fetch('/logout')
