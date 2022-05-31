@@ -19,10 +19,10 @@ function Chats() {
     <>
       <div>Диалог</div>
     {chat?.map((el) => <h1 key={el.id} >{`${el.lawyer_messages}, ${el.client_messages}`}</h1>)}
-      <form onSubmit={}>
+      {/* <form onSubmit={}>
        
        <button type='submit' onClick={postFetch}>123</button> 
-      </form>
+      </form> */}
       
     </>
   );
