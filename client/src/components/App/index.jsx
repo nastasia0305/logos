@@ -21,8 +21,6 @@ import { checkAuth } from "../../redux/thunk/asyncUsers";
 function App() {
   const dispatch = useDispatch();
 
-  const { session } = useSelector((state) => state.session);
-
   const { session } = useSelector(state => state.session)
   console.log(session)
 
