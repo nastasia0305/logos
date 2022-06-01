@@ -34,11 +34,11 @@ function NewsParams(props) {
       <form onSubmit={updateNews} className="form">
         <div className="row">
             <label htmlFor="title" className="label">Пароль</label>
-            <input type="title" className="input" name="title" placeholder="Заголовок" defaultValue={title} required />
+            <input type="title" className="input" name="title" placeholder="Заголовок"  required />
         </div>
         <div className="row">
             <label htmlFor="text" className="label">Пароль</label>
-            <input type="text" className="input" name="text" placeholder="Текст" defaultValue={text} required />
+            <input type="text" className="input" name="text" placeholder="Текст"  required />
         </div>
         <button type="submit" className="button shadow">Обновить</button>
       </form>

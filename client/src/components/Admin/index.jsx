@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
 import AdminLawyers from '../AdminLawyers'
+import AdminOrder from '../AdminOrder/AdminOrder';
 import News from '../News';
 
 function Admin() {
@@ -36,9 +37,9 @@ function Admin() {
       // case 3: {
       //   return <AdminSupport />
       // }
-      // case 4: {
-      //   return <AdminOrder />
-      // }
+      case 4: {
+        return <AdminOrder />
+      }
 
       case 1:
       default: {
