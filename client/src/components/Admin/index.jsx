@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
 import AdminLawyers from '../AdminLawyers'
+import News from '../News';
 
 function Admin() {
   const navigate = useNavigate()
@@ -29,9 +30,9 @@ function Admin() {
 
   const renderContent = () => {
     switch (state) {
-      // case 2: {
-      //   return <AdminNews />
-      // }
+      case 2: {
+      return <News />
+      }
       // case 3: {
       //   return <AdminSupport />
       // }
@@ -48,7 +49,7 @@ function Admin() {
 
   return (
     <div className="dialog dialog--full-width">
-      <div className="dialog__bar">Личный кабинет</div>
+      <div className="dialog__bar">Панель управления администратора</div>
       <div className="profile">
         <div className="profile__sidebar">
           <button onClick={() => setState(1)} className={getButtonClassName(1)}>Юристы</button>

@@ -15,6 +15,7 @@ import Profile from '../Profile'
 import UpdateProfile from '../UpdateProfile'
 import ConfirmEducation from '../ConfirmEducation'
 import Admin from '../Admin'
+import NewsParams from '../NewsParams'
 
 import { checkAuth } from '../../redux/thunk/asyncUsers'
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="updateProfile" element={<UpdateProfile />} />
             <Route path="confirmEducation" element={<ConfirmEducation />} />
+            <Route path="editNews/:id" element={<NewsParams />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Error />} />
           </Route>
