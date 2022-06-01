@@ -11,7 +11,7 @@ import { chatReducer } from './chatReducer'
 export const rootReducer = combineReducers({
   session: sessionsReducer,
   support: supportReducer,
-
+  request: anketaReducer,
   anketa: anketaReducer,
 
   chat: chatReducer,

@@ -18,12 +18,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
-        model: 'Anketas',
+        model: 'Requests',
         key: 'id',
       },
     },
     lawyer_id: {
-      allowNull: false,
+
       type: DataTypes.INTEGER,
       references: {
         model: 'Lawyers',
@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     status: {
       allowNull: false,
       type: DataTypes.TEXT,
+      defaultValue: 'new',
     },
   }, {
     sequelize,

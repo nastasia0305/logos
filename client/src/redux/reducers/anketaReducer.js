@@ -1,4 +1,4 @@
-const initialState = { anketa: {} }
+const initialState = { anketa: {}, allRequest: [] }
 
 export const anketaReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,7 +9,9 @@ export const anketaReducer = (state = initialState, action) => {
       }
     }
 
-
+    case "GET_ALL_REQUEST": {
+      // return { ...state, allRequest: [...allRequest, action.payload] }
+    }
     default: {
       return state
     }

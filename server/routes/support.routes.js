@@ -1,10 +1,9 @@
-const router = require("express").Router();
-const { Support } = require("../db/models");
+const router = require('express').Router();
+const { Support } = require('../db/models');
 
-
-router.post("/", async (req, res) => {
+router.post('/support', async (req, res) => {
   const { question, description, id } = req.body;
-  const { isLawyer } = req.session.user
+  const { isLawyer } = req.session.user;
 
   if (isLawyer) {
     await Support.create({
@@ -12,25 +11,21 @@ router.post("/", async (req, res) => {
       description,
       lawyer_id: id,
     });
-    
+
     res
       .status(200)
       .json({
         message:
-          "Ваша заявка передана в службу поддержки. Наши специалисты свяжутся с вами в ближайшее время.",
+          'Ваша заявка передана в службу поддержки. Наши специалисты свяжутся с вами в ближайшее время.',
       });
-  } else  {
+  } else {
     await Support.create({
-
       question,
       description,
       client_id: id,
     });
     res.status(200).json({ message: 'Ваша заявка передана в службу поддержки. Наши специалисты свяжутся с вами в ближайшее время.' });
-  
-      });
   }
 });
-
 
 module.exports = router;
