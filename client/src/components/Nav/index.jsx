@@ -19,6 +19,9 @@ function Nav() {
     { to: 'profile', title: 'Личный кабинет' },
     { to: '', title: 'Выход', onClick: () => { logout() } }
   ]
+  const adminLinks = [
+    { to: 'admin', title: 'Панель управления' },
+  ]
 
   const logout = () => {
     dispatch(logoutUser())
@@ -43,7 +46,13 @@ function Nav() {
     </ul>
   }
 
-  return <nav className="navigation">{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
+  const renderAdminLinks = () => {
+    if (session.isAdmin) {
+      return renderLinks(adminLinks)
+    }
+  }
+
+  return <nav className="navigation">{renderAdminLinks()}{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
 }
 
 export default Nav

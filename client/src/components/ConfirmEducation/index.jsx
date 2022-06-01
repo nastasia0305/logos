@@ -71,19 +71,19 @@ function ConfirmEducation() {
             Тип контракта
           </label>
           <select name="help" defaultValue="one" className="select">
-            <option value="onetime">Разовый контракт</option>
-            <option value="regular">Регулярный контракт</option>
+            <option value="разовый">Разовый контракт</option>
+            <option value="регулярный">Регулярный контракт</option>
           </select>
         </div>
         <div className="row">
           <label htmlFor="case" className="label">
             Характер дел
           </label>
-          <input type="checkbox" name="case" value="criminal" />
+          <input type="checkbox" name="case" value="уголовное" />
           Уголовное
-          <input type="checkbox" name="case" value="arbitration" />
+          <input type="checkbox" name="case" value="арбитражное" />
           Арбитражное
-          <input type="checkbox" name="case" value="tax" />
+          <input type="checkbox" name="case" value="налоговое" />
           Налоговое
         </div>
         <div className="row">
