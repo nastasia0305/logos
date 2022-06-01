@@ -12,6 +12,10 @@ const updateProfileRouter = require('./routes/updateRoutes/update.profile.route'
 
 const validateLawyerRouter = require('./routes/updateRoutes/validate.lawyer.route');
 
+
+const admin = require('./routes/admin.routes');
+
+
 config(app);
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
@@ -27,6 +31,9 @@ app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter);
 
 app.use('/validateLawyer', validateLawyerRouter);
+
+
+app.use('/admin', admin);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);

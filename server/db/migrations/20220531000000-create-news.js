@@ -1,26 +1,21 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Admins', {
+    await queryInterface.createTable('News', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
+      title: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      password: {
+      text: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      isLawyer: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-      },
-      isAdmin: {
+      isActive: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: true,
@@ -36,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Admins');
+    await queryInterface.dropTable('News');
   },
 };
