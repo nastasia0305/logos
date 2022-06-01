@@ -10,7 +10,7 @@ export const adminReducer = (state = initialState, action) => {
       return { ...state, lawyers: action.payload }
     }
 
-    case 'GET NEWS': {
+    case 'GET_NEWS': {
       return { ...state, news: action.payload }
     }
 
