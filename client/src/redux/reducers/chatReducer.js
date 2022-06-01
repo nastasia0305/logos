@@ -1,4 +1,4 @@
-const initialState = { chats: {} };
+const initialState = { chats: [] };
 
 export const chatReducer = (state = initialState, action) => {
   switch (action.type) {
