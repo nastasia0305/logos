@@ -8,12 +8,11 @@ function Main() {
   const dispatch = useDispatch()
 
   const { news } = useSelector(state => state.news)
-  console.log(news)
 
   useEffect(() => dispatch(getNews()), [ dispatch ])
 
-  const renderItem = ({ title, text, updatedAt }) => {
-    return <div className="col">
+  const renderItem = ({ id, title, text, updatedAt }) => {
+    return <div className="col" key={'news-' + id}>
       <div className="row row--center"><h4>{title}</h4></div>
       <div>{text}</div>
       <br />
@@ -38,7 +37,7 @@ function Main() {
   return <div className="dialog dialog--full-width shadow">
     <div className="dialog__bar">Новости Logos!</div>
     <div className="dialog__content">
-      <p class="text--center">Добро пожаловать!</p>
+      <p className="text--center">Добро пожаловать!</p>
       <br />
       {renderNews()}
     </div>
