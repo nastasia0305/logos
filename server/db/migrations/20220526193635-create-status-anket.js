@@ -11,12 +11,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Anketas',
+          model: 'Requests',
           key: 'id',
         },
       },
       lawyer_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Lawyers',
@@ -25,6 +24,7 @@ module.exports = {
       },
       status: {
         allowNull: false,
+        defaultValue: 'new',
         type: Sequelize.TEXT,
       },
       createdAt: {

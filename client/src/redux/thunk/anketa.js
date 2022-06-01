@@ -11,3 +11,17 @@ export const addAnketa = (data) => {
 
   }
 }
+
+export const addLawyerId = (data, id) => {
+  return (dispatch) => {
+    fetch(`/add/lawyer_id/${data}`, {
+      headers: { 'content-type': 'application/json' },
+      method: 'PUT',
+      body: JSON.stringify(id),
+    })
+    // .then(response => response.json())
+    // .then(data => dispatch({ type: "ADD_LAWYER_ID", payload: data }))
+    // .catch(error => console.error(error))
+  }
+}
+

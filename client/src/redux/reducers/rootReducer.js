@@ -12,10 +12,9 @@ import { adminReducer } from './adminReducer'
 export const rootReducer = combineReducers({
   session: sessionsReducer,
   support: supportReducer,
-
+  request: anketaReducer,
   anketa: anketaReducer,
-
   chat: chatReducer,
-
   admin: adminReducer
+
 })

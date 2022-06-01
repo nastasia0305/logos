@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Anketas', {
+    await queryInterface.createTable('Requests', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,6 +29,15 @@ module.exports = {
       case: {
         type: Sequelize.TEXT,
       },
+      clientName: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+
+      },
+      lawyerName: {
+        type: Sequelize.TEXT,
+
+      },
       service: {
         type: Sequelize.TEXT,
       },
@@ -54,6 +63,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Anketas');
+    await queryInterface.dropTable('Requests');
   },
 };

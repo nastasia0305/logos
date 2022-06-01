@@ -2,7 +2,8 @@ const router = require('express').Router();
 
 const { Support } = require('../db/models');
 
-router.post('/', async (req, res) => {
+router.post('/support', async (req, res) => {
+
   const { question, description, id } = req.body;
   const { isLawyer } = req.session.user;
 
