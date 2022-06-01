@@ -13,7 +13,5 @@ export const rootReducer = combineReducers({
   support: supportReducer,
   request: anketaReducer,
   anketa: anketaReducer,
-
-  chat: chatReducer,
-
+  chats: chatReducer,
 })

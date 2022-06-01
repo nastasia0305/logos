@@ -11,8 +11,10 @@ const sessionRouter = require('./routes/authorizationRoutes/check.session.route'
 const updateProfileRouter = require('./routes/updateRoutes/update.profile.route');
 
 const validateLawyerRouter = require('./routes/updateRoutes/validate.lawyer.route');
+const chatRouter = require('./routes/chatRoutes/chat.route');
 
 config(app);
+
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
@@ -26,6 +28,7 @@ app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter);
 
 app.use('/validateLawyer', validateLawyerRouter);
+app.use('/', chatRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
