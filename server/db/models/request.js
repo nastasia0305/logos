@@ -30,6 +30,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    clientName: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+
+    },
+    lawyerName: {
+
+      type: DataTypes.TEXT,
+
+    },
     statusClient: {
       type: DataTypes.TEXT,
     },

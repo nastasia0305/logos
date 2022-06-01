@@ -20,6 +20,7 @@ app.use('/logout', logoutRouter);
 app.use('/', sessionRouter);
 app.use('/add', require('./routes/support.routes'));
 app.use('/add', require('./routes/anketa.routes'));
+app.use('/add', require('./routes/anketa.routes'));
 app.use('/', require('./routes/anketa.routes'));
 
 app.use('/getsession', sessionRouter);

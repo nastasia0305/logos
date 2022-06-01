@@ -29,6 +29,15 @@ module.exports = {
       case: {
         type: Sequelize.TEXT,
       },
+      clientName: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+
+      },
+      lawyerName: {
+        type: Sequelize.TEXT,
+
+      },
       service: {
         type: Sequelize.TEXT,
       },
