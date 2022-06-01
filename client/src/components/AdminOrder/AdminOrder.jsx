@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AdminOrderCard from "../AdminOrderCard.jsx/AdminOrderCard";
 
 function AdminOrder(props) {
   const navigate = useNavigate();
@@ -21,14 +22,12 @@ function AdminOrder(props) {
       .then((data) => setAllChats(data));
   }, []);
 
-
   return (
     <>
       <div>
-
-{allChats?.map(el => <button key={el.id}>{`${el.case}, ${el.help}`}</button>)}
-      
-
+        {allChats?.map((el) => (
+          <AdminOrderCard key={el.id} data={el} />
+        ))}
       </div>
     </>
   );

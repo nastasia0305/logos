@@ -42,3 +42,16 @@ export const editNews = (data) => {
       .catch(error => console.error(error))
   }
 }
+
+export const deleteOrder = (id) => {
+  return (dispatch) => {
+    console.log(id)
+    fetch(`/admin/deleteOrder/${id}`, {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({id})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+}

@@ -7,7 +7,7 @@ import ChatList from "../ChatList/ChatList";
 
 function Chats() {
   const dispatch = useDispatch();
-  // const { chats }  = useSelector(state => state.chats)
+  const { chats }  = useSelector(state => state.chats)
 
   const postFetch = () => {
     console.log("Fetch!");
@@ -19,10 +19,11 @@ useEffect(() => {
 
   return (
   <>
-  <div>Диалог</div>
+  <div className="dialog__bar" >Диалог</div>
     <div style={{display:"flex"}}>
-<ChatList />
-    </div></>
+ {chats?.map(el => <ChatList key={el.id} data={el} />)} 
+    </div>
+    </>
   );
 }
 

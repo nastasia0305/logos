@@ -4,6 +4,8 @@ const { Op } = require('sequelize');
 
 const { Lawyer } = require('../db/models');
 const { News } = require('../db/models');
+const { Request } = require('../db/models')
+const { StatusAnket } = require('../db/models')
 
 router.get('/lawyers', async (req, res) => {
   const { user } = req.session;
@@ -67,5 +69,14 @@ router.get('/news', async (req, res) => {
     res.status(404).json({ message: error });
   }
 });
+
+router.delete('/deleteOrder/:id', async (req, res) => {
+  const { id } = req.params
+
+  const deletedStatusAnket = await StatusAnket.destroy({ where: { anketa_id: id } })
+  const deletedOrder = await Request.destroy({ where: { id } })
+  res.status(200).json(id)
+})
+
 
 module.exports = router;
