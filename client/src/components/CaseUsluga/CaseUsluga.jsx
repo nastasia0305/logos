@@ -23,13 +23,17 @@ function CaseUsluga(props) {
 
   const { anketa } = useSelector(state => state.anketa)
   const { session } = useSelector(state => state.session)
-  const { id } = session
+  const { id, firstname, lastname, fathersname } = session
+  console.log("🚀 ~ CaseUsluga ~ lastname", lastname)
   const getStatusForm = (event) => {
     event.preventDefault()
     const data = {
       ...anketa,
       service: event.target.service.value,
-      id: id
+      id: id,
+      firstname,
+      lastname,
+      fathersname
     }
     dispatch(addAnketa(data))
 

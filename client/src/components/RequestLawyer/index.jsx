@@ -7,10 +7,10 @@ function Anketa(props) {
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
   const { session } = useSelector(state => state.session)
-  const { id } = session
+  const { id, firstname, lastname, fathersname } = session
 
   const sendDefaultAnketa = () => {
-    dispatch(addAnketa({ id }))
+    dispatch(addAnketa({ id, firstname, lastname, fathersname }))
   }
   return (
     <div className="window" >

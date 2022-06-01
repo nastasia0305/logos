@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     lawyer_id: {
-
       type: DataTypes.INTEGER,
       references: {
         model: 'Lawyers',
