@@ -7,14 +7,16 @@ import Greeting from '../Greeting'
 import Support from '../Support'
 import RequestLawyer from '../RequestLawyer'
 import TakeOrder from '../TakeOrder'
+import { getAllRequest } from '../../redux/thunk/getAllRequest'
 
 function Profile() {
+  const dispatch = useDispatch()
   const { session } = useSelector(store => store.session)
   const { isLawyer, isValidate } = session
   const { support } = useSelector(store => store.support)
   const { message } = support
   const [state, setState] = useState(1)
-  
+
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -24,12 +26,17 @@ function Profile() {
     return result.join(' ')
   }
 
+  const sendFetchToRequest = () => {
+    dispatch(getAllRequest())
+    setState(5)
+  }
+
   const renderButtonBySession = () => {
     if (isLawyer) {
       if (isValidate) {
-        return <button onClick={() => setState(5)} className={getButtonClassName(5)}>Взять заказ</button>
+        return <button onClick={sendFetchToRequest} className={getButtonClassName(5)}>Взять заказ</button>
       }
-      return  <button onClick={() => setState(5)} className={getButtonClassName(5)} disabled>Взять заказ</button>
+      return <button onClick={() => setState(5)} className={getButtonClassName(5)} disabled>Взять заказ</button>
     }
     return <button onClick={() => setState(4)} className={getButtonClassName(4)}>Запросить юриста</button>
   }

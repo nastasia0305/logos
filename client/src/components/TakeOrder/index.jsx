@@ -2,7 +2,10 @@ import React from 'react'
 
 function TakeOrder() {
   return (
-    <div>Здесь будет заказ юриста.</div>
+    <div className="profile">
+
+      hello
+    </div>
   )
 }
 

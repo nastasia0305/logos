@@ -10,9 +10,7 @@ const logoutRouter = require('./routes/authorizationRoutes/logout.route');
 const sessionRouter = require('./routes/authorizationRoutes/check.session.route');
 const updateProfileRouter = require('./routes/updateRoutes/update.profile.route');
 
-const validateLawyerRouter = require('./routes/updateRoutes/validate.lawyer.route')
-
-
+const validateLawyerRouter = require('./routes/updateRoutes/validate.lawyer.route');
 
 config(app);
 app.use('/registration', registrationRouter);
@@ -22,12 +20,12 @@ app.use('/logout', logoutRouter);
 app.use('/', sessionRouter);
 app.use('/add', require('./routes/support.routes'));
 app.use('/add', require('./routes/anketa.routes'));
+app.use('/', require('./routes/anketa.routes'));
 
 app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter);
 
-
-app.use('/validateLawyer', validateLawyerRouter)
+app.use('/validateLawyer', validateLawyerRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
