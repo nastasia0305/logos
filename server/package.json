@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js --ignore ./sessions"
+    "dev": "nodemon app.js --ignore ./sessions",
+    "migrate:clean": "npx sequelize db:migrate:undo:all; npx sequelize db:migrate; npx sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",

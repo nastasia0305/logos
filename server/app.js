@@ -13,9 +13,8 @@ const updateProfileRouter = require('./routes/updateRoutes/update.profile.route'
 const validateLawyerRouter = require('./routes/updateRoutes/validate.lawyer.route');
 const chatRouter = require('./routes/chatRoutes/chat.route');
 
-
 const admin = require('./routes/admin.routes');
-
+const news = require('./routes/news.routes');
 
 config(app);
 
@@ -35,8 +34,8 @@ app.use('/updateProfile', updateProfileRouter);
 app.use('/validateLawyer', validateLawyerRouter);
 app.use('/', chatRouter);
 
-
 app.use('/admin', admin);
+app.use('/news', news);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
