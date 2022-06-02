@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getOwnLawyerRequest } from '../../redux/thunk/getAllRequest'
+import OrderCard from '../OrderCard/OrderCard'
 
 function Greeting() {
   const navigation = useNavigate()
-
+  const dispatch = useDispatch()
   const { session } = useSelector(store => store.session)
   const { isValidate } = session
+  const { id } = session
+
 
 
   // const renderLawyerButton = () => {
@@ -16,17 +20,17 @@ function Greeting() {
   //   }
   // }
 
- 
+
   const renderLawyerButton = () => {
-    if (isValidate ===  false) {
-      return <button onClick={()=> navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+    if (isValidate === false) {
+      return <button onClick={() => navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
     }
   }
 
-  
+
   const renderButtons = () => {
     return <div className="row row--right">
-      <button onClick={()=> navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
+      <button onClick={() => navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
       {renderLawyerButton()}
     </div>
   }
@@ -41,7 +45,6 @@ function Greeting() {
       <br />
 
       <b className="row row--center">Добро пожаловать!</b>
-
       {renderButtons()}
     </div>
   )

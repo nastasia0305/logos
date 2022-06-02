@@ -43,7 +43,7 @@ module.exports = {
       },
       condition: {
         type: Sequelize.TEXT,
-        defaultValue: 'отправлено',
+        defaultValue: 'new',
       },
       lawyer_id: {
         type: Sequelize.INTEGER,
