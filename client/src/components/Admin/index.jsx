@@ -12,7 +12,7 @@ function Admin() {
   const navigate = useNavigate()
 
   const { id } = useParams();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   const { session } = useSelector(store => store.session)
   const { isAdmin } = session
