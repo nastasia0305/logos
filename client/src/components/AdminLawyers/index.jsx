@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getLawyers, validateLawyer } from '../../redux/thunk/admin'
+import React, { useEffect } from 'react'
+
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { getLawyers, validateLawyer } from '../../redux/thunk/admin'
 
 function AdminLawyers() {
   const dispatch = useDispatch()
@@ -9,9 +11,6 @@ function AdminLawyers() {
 
   const { lawyers } = useSelector(state => state.admin)
 
-  const length = lawyers.length
-  // console.log(lawyers)
-  // console.log(lawyers[0].case.join(', '))
   useEffect(() => dispatch(getLawyers()), [ dispatch ])
 
   const validate = (id) => {
@@ -42,35 +41,33 @@ function AdminLawyers() {
   //   }
   // }
 
-  const renderItem = (lawyer) => {
-    return <tr key={'lawyer-' + lawyer.id}>
-      <td className="text--center">{lawyer.firstname}</td>
-      <td className="text--center">{lawyer.lastname}</td>
-      <td className="text--center">{lawyer.city}</td>
-      {/* <td className="text--center">
-        <img src ="{lawyer.certificate}>
-        </img>{lawyer.diploma}</td> */}
-
-      <td>
-        <button onClick={() => validate(lawyer.id)} className="button shadow">Утвердить</button>
+  const renderItem = (item) => {
+    return <tr key={'lawyer-' + item.id}>
+      <td className="text--center">{item.firstname}</td>
+      <td className="text--center">{item.lastname}</td>
+      <td className="text--center">{item.city}</td>
+      <td className="text--center">
+        {/* <img src ="{lawyer.certificate}></img>{lawyer.diploma} */}
+      </td>
+      <td className="text--center">
+        <button onClick={() => validate(item.id)} className="button shadow">Утвердить</button>
       </td>
     </tr>
   }
 
   const renderList = () => {
-       return <tbody>{lawyers.map(lawyer => renderItem(lawyer))}</tbody>
-     }
+    return <tbody>{lawyers.map(item => renderItem(item))}</tbody>
+  }
 
-  return (
-    <>
-    { length >=1
-      ?
-      <table className="table">{renderHeader()}{renderList()}</table>
-      :
-      <h3>Новых данных нет</h3>
+  const renderContent = () => {
+    if (lawyers.length) {
+      return <table className="table">{renderHeader()}{renderList()}</table>
     }
-    </>
-  )
+
+    return <div className="row row--center"><h3>Новых данных нет</h3></div>
+  }
+
+  return renderContent()
 }
 
 export default AdminLawyers

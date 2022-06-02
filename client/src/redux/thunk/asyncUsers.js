@@ -4,9 +4,7 @@ export const checkAuth = () => {
   return (dispatch) => {
     fetch('/getSession')
     .then(response => response.json())
-    .then(data => {
-      dispatch({ type: 'CHECK_SESSION', payload: data })
-    })
+    .then(data => dispatch({ type: 'CHECK_SESSION', payload: data }))
     .catch(error => console.error(error))
   }
 }
@@ -14,7 +12,7 @@ export const checkAuth = () => {
 export const registerUser = (data) => {
   return (dispatch) => {
     fetch('/registration', {
-      headers: {'content-type': 'application/json'},
+      headers,
       method: 'POST',
       body: JSON.stringify(data),
     })

@@ -9,7 +9,6 @@ import './assets/buttons.css';
 import './assets/controls.css';
 import './assets/header.css';
 import './assets/navigation.css';
-import './assets/main.css';
 import './assets/footer.css';
 import './assets/profile.css';
 import './assets/anketa.css';

@@ -15,10 +15,11 @@ function Nav() {
     { to: 'registration', title: 'Регистрация' },
     { to: 'login', title: 'Вход'}
   ]
-  const authLinks = [
-    { to: 'profile', title: 'Личный кабинет' },
-    { to: '', title: 'Выход', onClick: () => { logout() } }
-  ]
+  const authLinks = []
+  if (!session.isAdmin) {
+    authLinks.push({ to: 'profile', title: 'Личный кабинет' })
+  }
+  authLinks.push({ to: '', title: 'Выход', onClick: () => { logout() } })
   const adminLinks = [
     { to: 'admin', title: 'Панель управления' },
   ]

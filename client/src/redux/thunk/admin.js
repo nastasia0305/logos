@@ -1,3 +1,5 @@
+const headers = { 'content-type': 'application/json' }
+
 export const getLawyers = () => {
   return (dispatch) => {
     fetch('/admin/lawyers')
@@ -7,13 +9,12 @@ export const getLawyers = () => {
   }
 }
 
-
 export const validateLawyer = (data) => {
   return (dispatch) => {
     fetch('/admin/lawyers', {
       method: 'PUT',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify({id: data.id})
+      headers,
+      body: JSON.stringify({ id: data.id })
     })
       .then(response => response.json())
       .then(data => dispatch({ type: 'VALIDATE_LAWYER', payload: data }))
@@ -30,15 +31,52 @@ export const getNews = () => {
   }
 }
 
-export const editNews = (data) => {
+export const updateNews = (data) => {
   return (dispatch) => {
-    fetch('/admin/news:id', {
+    fetch('/admin/news', {
       method: 'PUT',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify({id: data.id})
+      headers,
+      body: JSON.stringify(data)
     })
       .then(response => response.json())
-      .then(data => dispatch({ type: 'EDIT_NEWS', payload: data }))
+      .then(data => dispatch({ type: 'UPDATE_NEWS', payload: data }))
+      .catch(error => console.error(error))
+  }
+}
+export const createNews = (data) => {
+  return (dispatch) => {
+    fetch('/admin/news', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => dispatch({ type: 'CREATE_NEWS', payload: data }))
+      .catch(error => console.error(error))
+  }
+}
+export const activateNews = (data) => {
+  return (dispatch) => {
+    fetch('/admin/news/activation', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => dispatch({ type: 'ACTIVATE_NEWS', payload: data }))
+      .catch(error => console.error(error))
+  }
+}
+
+export const removeNews = (data) => {
+  return (dispatch) => {
+    fetch('/admin/news', {
+      method: 'DELETE',
+      headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => dispatch({ type: 'REMOVE_NEWS', payload: data }))
       .catch(error => console.error(error))
   }
 }
