@@ -14,12 +14,46 @@ export const adminReducer = (state = initialState, action) => {
       return { ...state, news: action.payload }
     }
 
-    case 'GET_ALL_ORDERS':{
+    case 'UPDATE_NEWS': {
+      const news = state.news.map(item => {
+        if (item.id === action.payload.id) {
+          item.title = action.payload.title
+          item.text = action.payload.text
+          item.isActive = action.payload.isActive
+        }
+
+        return item
+      })
+
+      return { ...state, news }
+    }
+
+    case 'ACTIVATE_NEWS': {
+      const news = state.news.map(item => {
+        if (item.id === action.payload.id) {
+          item.isActive = action.payload.isActive
+        }
+
+        return item
+      })
+      
+      return { ...state, news }
+    }
+
+    case 'REMOVE_NEWS': {
+      return { ...state, news: state.news.filter(el => el.id !== action.payload)}
+    }
+
+    case 'CREATE_NEWS': {
+      return {...state, news:[...state.news, action.payload] }
+    }
+
+    case 'GET_ALL_ORDERS': {
       return { ...state, orders: action.payload }
     }
     
     case 'DELETE_ORDER': {
-      return { ...state, orders: state.orders.filter(el => el.id != action.payload)}
+      return { ...state, orders: state.orders.filter(el => el.id !== action.payload)}
     }
 
     default: {

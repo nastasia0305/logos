@@ -4,8 +4,8 @@ const { Op } = require('sequelize');
 
 const { Lawyer } = require('../db/models');
 const { News } = require('../db/models');
-const { Request } = require('../db/models')
-const { StatusAnket } = require('../db/models')
+const { Request } = require('../db/models');
+const { StatusAnket } = require('../db/models');
 
 router.get('/lawyers', async (req, res) => {
   const { user } = req.session;
@@ -70,7 +70,6 @@ router.get('/news', async (req, res) => {
   }
 });
 
-
 router.put('/news', async (req, res) => {
   const { user } = req.session;
 
@@ -103,12 +102,12 @@ router.post('/news', async (req, res) => {
     const { title, text } = req.body;
 
     const newsResponse = await News.create({ title, text });
-    
+
     let result = false;
     if (newsResponse && newsResponse.get && typeof newsResponse.get === 'function') {
       result = newsResponse.get();
     }
-    
+
     res.status(result ? 200 : 400).json(result);
   } catch (error) {
     res.status(404).json({ message: error });
@@ -117,18 +116,20 @@ router.post('/news', async (req, res) => {
 
 router.post('/news/activation', async (req, res) => {
   const { user } = req.session;
-  
+
   if (!user.isAdmin) {
     res.status(404);
   }
-  
+
   try {
     const { id, isActive } = req.body;
-    
+
     const newsResponse = await News.update({ isActive }, { where: { id } });
-    const result = newsResponse.length > 0;
-    
-    res.status(result ? 200 : 400).json(result);
+    const isUpdated = newsResponse.length > 0;
+    const updatedNews = await News.findOne({ where: { id } });
+    const result = typeof updatedNews.get === 'function' ? updatedNews.get() : updatedNews;
+
+    res.status(isUpdated ? 200 : 400).json(result);
   } catch (error) {
     res.status(404).json({ message: error });
   }
@@ -140,13 +141,13 @@ router.delete('/news', async (req, res) => {
   if (!user.isAdmin) {
     res.status(404);
   }
-  
+
   try {
     const { id } = req.body;
-    
+
     const newsResponse = await News.destroy({ where: { id } });
     const result = newsResponse > 0;
-    
+
     res.status(result ? 200 : 400).json(result);
   } catch (error) {
     res.status(404).json({ message: error });
@@ -154,10 +155,10 @@ router.delete('/news', async (req, res) => {
 });
 
 router.delete('/deleteOrder/:id', async (req, res) => {
-  const { id } = req.params
-  const deletedStatusAnket = await StatusAnket.destroy({ where: { anketa_id: id } })
-  const deletedOrder = await Request.destroy({ where: { id } })
-  res.status(200).json(id)
-})
+  const { id } = req.params;
+  const deletedStatusAnket = await StatusAnket.destroy({ where: { anketa_id: id } });
+  const deletedOrder = await Request.destroy({ where: { id } });
+  res.status(200).json(id);
+});
 
 module.exports = router;
