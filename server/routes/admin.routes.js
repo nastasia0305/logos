@@ -56,7 +56,7 @@ router.get('/news', async (req, res) => {
   }
 
   try {
-    const newsResponse = await News.findAll();
+    const newsResponse = await News.findAll({ order: [['updatedAt', 'DESC']] });
     const result = await Promise.all(newsResponse.map((item) => {
       if (item.get && typeof item.get === 'function') {
         return item.get();

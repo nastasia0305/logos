@@ -36,7 +36,7 @@ function AdminNews() {
       <td className="text--center">{item.isActive ? 'Да' : 'Нет'}</td>
       <td className="text--center">
         <button onClick={() => navigate(`/admin/news/${item.id}`)} className="button shadow">Редактировать</button>
-        <button onClick={() => activate({ id: item.id, isActive: item.isActive})} className="button shadow">{item.isActive ? 'Снять с публикации' : 'Опубликовать'}</button>
+        <button onClick={() => activate({ id: item.id, isActive: !item.isActive})} className="button shadow">{item.isActive ? 'Снять с публикации' : 'Опубликовать'}</button>
       </td>
     </tr>
   }

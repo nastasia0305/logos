@@ -4,7 +4,7 @@ const { News } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const newsResponse = await News.findAll({ where: { isActive: true } });
+    const newsResponse = await News.findAll({ where: { isActive: true }, order: [['updatedAt', 'DESC']] });
     const result = await Promise.all(newsResponse.map((item) => {
       if (item.get && typeof item.get === 'function') {
         return item.get();
