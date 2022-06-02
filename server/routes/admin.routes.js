@@ -72,7 +72,6 @@ router.get('/news', async (req, res) => {
 
 router.delete('/deleteOrder/:id', async (req, res) => {
   const { id } = req.params
-
   const deletedStatusAnket = await StatusAnket.destroy({ where: { anketa_id: id } })
   const deletedOrder = await Request.destroy({ where: { id } })
   res.status(200).json(id)

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getAllOrders } from "../../redux/thunk/admin";
 import AdminOrderCard from "../AdminOrderCard.jsx/AdminOrderCard";
 
 function AdminOrder(props) {
   const navigate = useNavigate();
-  const [allChats, setAllChats] = useState([]);
+  const dispatch = useDispatch();
+  const { orders } = useSelector(state => state.admin)
 
   const { session } = useSelector((store) => store.session);
   const { isAdmin } = session;
@@ -17,15 +19,14 @@ function AdminOrder(props) {
   }, [isAdmin, navigate]);
 
   useEffect(() => {
-    fetch("/allOrders")
-      .then((res) => res.json())
-      .then((data) => setAllChats(data));
-  }, []);
+    dispatch(getAllOrders())
+  }, [dispatch]);
+
 
   return (
     <>
       <div>
-        {allChats?.map((el) => (
+        {orders?.map((el) => (
           <AdminOrderCard key={el.id} data={el} />
         ))}
       </div>
