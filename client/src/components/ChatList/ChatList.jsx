@@ -1,11 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-function ChatList(props) {
-  const { chats }  = useSelector(state => state.chats)
+function ChatList({ data }) {
+
   return (
     <>
-      { chats.map((el) => <button key={el.id}> <p>{`${el.case}, ${el.help}`}</p></button>) }
+    <div>
+<p>{`${data.case}, ${data.help}`}</p>
+   <button> Открыть </button>
+    </div>
+ 
     </>
   );
 }

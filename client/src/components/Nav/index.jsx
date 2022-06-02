@@ -22,6 +22,7 @@ function Nav() {
   authLinks.push({ to: '', title: 'Выход', onClick: () => { logout() } })
   const adminLinks = [
     { to: 'admin', title: 'Панель управления' },
+    { to: '', title: 'Выход', onClick: () => { logout() } }
   ]
 
   const logout = () => {
@@ -53,7 +54,7 @@ function Nav() {
     }
   }
 
-  return <nav className="navigation">{renderAdminLinks()}{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
+  return <nav className="navigation">{ session.isAdmin? renderAdminLinks() : (session.id ? renderLinks(authLinks) : renderLinks(basicLinks)) }</nav>
 }
 
 export default Nav

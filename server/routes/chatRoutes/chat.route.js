@@ -7,4 +7,10 @@ router.get('/allchats', async (req, res) => {
   res.status(200).json(allClientRequests)
 })
 
+router.get('/allOrders', async (req, res) => {
+  const allOrders = await Request.findAll()
+  console.log(allOrders);
+  res.status(200).json(allOrders)
+})
+
 module.exports = router;

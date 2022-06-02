@@ -80,3 +80,27 @@ export const removeNews = (data) => {
       .catch(error => console.error(error))
   }
 }
+
+export const getAllOrders = (data) => {
+  return (dispatch) => {
+    fetch("/allOrders")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: 'GET_ALL_ORDERS', payload: data}))
+      .catch(error => console.error(error))
+  }
+}
+
+export const deleteOrder = (id) => {
+  return (dispatch) => {
+    console.log(id)
+    fetch(`/admin/deleteOrder/${id}`, {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({ id })
+    })
+    .then(res => res.json())
+    .then(data => dispatch({ type: 'DELETE_ORDER', payload: data }))
+    .catch(error => console.error(error))
+  }
+}
+

@@ -10,6 +10,8 @@ function Login() {
   const navigate = useNavigate()
 
   const { session } = useSelector(store => store.session)
+// TODO: если сессия админа сделать навигацию на /admin вместо /profile
+  // const { isAdmin } = session
   const { id } = session
 
   const checkAuth = () => {

@@ -5,6 +5,11 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import AdminNews from '../AdminNews';
 import AdminLawyers from '../AdminLawyers'
+<<<<<<< HEAD
+import AdminOrder from '../AdminOrder/AdminOrder';
+import News from '../News';
+=======
+>>>>>>> 04f037ba9e282c236f129d7ff1bb1a810bdd2762
 
 function Admin() {
   const navigate = useNavigate()
@@ -39,9 +44,9 @@ function Admin() {
       // case 3: {
       //   return <AdminSupport />
       // }
-      // case 4: {
-      //   return <AdminOrder />
-      // }
+      case 4: {
+        return <AdminOrder />
+      }
 
       case 1:
       default: {
