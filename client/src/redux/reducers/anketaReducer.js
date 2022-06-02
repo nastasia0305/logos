@@ -11,7 +11,7 @@ export const anketaReducer = (state = initialState, action) => {
     case "GET_ALL_REQUEST": {
 
 
-      return { ...state, allRequest: action.payload }
+      return { ...state, allRequest: [...state.allRequest, action.payload] }
     }
     // case "GET_ALL_OWN_REQUEST": {
 

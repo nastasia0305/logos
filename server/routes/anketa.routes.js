@@ -30,7 +30,6 @@ router
       },
     });
     res.status(200).json(ownLawyerRequest);
-    console.log('🚀 ~ .get ~ ownLawyerReauest', ownLawyerRequest);
   })
   .get('/request/:id', async (req, res) => {
     const { id } = req.params;
@@ -50,7 +49,6 @@ router
     const dontShowRequest = allStatusAnket.map((elem) => elem.anketa_id);
 
     const result = allAnket.filter((elem) => !dontShowRequest.includes(elem.id));
-    console.log('🚀 ~ .get ~ result', result);
 
     res.status(200).json(result);
   })
@@ -76,12 +74,17 @@ router
       anketa_id: id,
       lawyer_id,
       status: 'accept',
+
     });
   })
+
   .put('/update/request/lawyer_id/:lawyer_id/:id', async (req, res) => {
     const { lawyer_id, id } = req.params;
+    const { firstname, lastname } = req.session.user;
+    const fullLawyerName = `${lastname} ${firstname}`;
     await Request.update({
       lawyer_id,
+      lawyerName: fullLawyerName,
     }, { where: { id } });
   });
 module.exports = router;
