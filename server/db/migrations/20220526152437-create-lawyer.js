@@ -41,9 +41,11 @@ module.exports = {
       },
       case: {
         type: Sequelize.ARRAY(Sequelize.TEXT),
+        defaultValue: [],
       },
       service: {
         type: Sequelize.ARRAY(Sequelize.TEXT),
+        defaultValue: [],
       },
       educationLevel: {
         type: Sequelize.TEXT,

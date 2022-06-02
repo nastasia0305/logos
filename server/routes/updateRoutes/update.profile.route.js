@@ -14,8 +14,7 @@ router.put('/', async (req, res) => {
 
     const currentUserEmail = req.session.user.email;
     const hasLawyer = await Lawyer.findOne({ where: { email: currentUserEmail } });
-    const hasClient = await Client.findOne({ where: { email: currentUserEmail } });
-    console.log('====>', hasLawyer);
+  
     if (hasLawyer) {
       await Lawyer.update({
         firstname, lastname, fathersname, email, city,
@@ -23,7 +22,6 @@ router.put('/', async (req, res) => {
 
       const updatedLawyer = await Lawyer.findOne({ where: { email } });
       req.session.user = updatedLawyer;
-      console.log('console=====>', updatedLawyer);
       res.status(200).json({ message: 'Данные успешно изменены.', user: updatedLawyer });
     } else {
       await Client.update({

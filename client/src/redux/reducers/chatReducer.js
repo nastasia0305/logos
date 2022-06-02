@@ -1,10 +1,10 @@
-const initialState = { chat: {} };
+const initialState = { chats: [] };
 
 export const chatReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case "GET_MESSAGES": {
-    //   return { ...state, chat: action.payload };
-    // }
+    case "ALL_CHATS": {
+      return { ...state, chats: action.payload };
+    }
 
     default: {
       return state;

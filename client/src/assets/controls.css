@@ -35,6 +35,13 @@
   user-select: none;
 }
 
+.textarea {
+  line-height: 18px;
+  min-height: 62px;
+  white-space: pre-wrap;
+  resize: vertical;
+}
+
 .select {
   margin: 0;
   padding-top: 4px;
@@ -51,4 +58,32 @@
   cursor: pointer;
   min-width: 16px;
   width: 100%;
+}
+
+
+.table {
+  border: 1px solid #8F9092;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table thead tr {
+  border-bottom: 1px solid #8F9092;
+}
+
+.table th {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.table td {
+  padding: 5px;
+}
+
+.table tr + tr {
+  border-top: 1px solid #8F9092;
+}
+
+.table tbody tr:hover {
+  background-color: #ececec;
 }

@@ -15,8 +15,13 @@ function Nav() {
     { to: 'registration', title: 'Регистрация' },
     { to: 'login', title: 'Вход'}
   ]
-  const authLinks = [
-    { to: 'profile', title: 'Личный кабинет' },
+  const authLinks = []
+  if (!session.isAdmin) {
+    authLinks.push({ to: 'profile', title: 'Личный кабинет' })
+  }
+  authLinks.push({ to: '', title: 'Выход', onClick: () => { logout() } })
+  const adminLinks = [
+    { to: 'admin', title: 'Панель управления' },
     { to: '', title: 'Выход', onClick: () => { logout() } }
   ]
 
@@ -43,7 +48,13 @@ function Nav() {
     </ul>
   }
 
-  return <nav className="navigation">{ session.id ? renderLinks(authLinks) : renderLinks(basicLinks) }</nav>
+  const renderAdminLinks = () => {
+    if (session.isAdmin) {
+      return renderLinks(adminLinks)
+    }
+  }
+
+  return <nav className="navigation">{ session.isAdmin? renderAdminLinks() : (session.id ? renderLinks(authLinks) : renderLinks(basicLinks)) }</nav>
 }
 
 export default Nav

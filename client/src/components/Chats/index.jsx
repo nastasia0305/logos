@@ -1,28 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getChats } from "../../redux/thunk/asyncChats";
+import ChatList from "../ChatList/ChatList";
+
 
 
 function Chats() {
   const dispatch = useDispatch();
-  // const { chat } = useSelector(state => state.chat )
+  const { chats }  = useSelector(state => state.chats)
+
   const postFetch = () => {
     console.log("Fetch!");
     
-  };
-
-  // useEffect(() => {
-  //   dispatch(getMessages())
-  // }, [dispatch])
+  }
+useEffect(() => {
+  dispatch(getChats())
+}, [dispatch])
 
   return (
-    <>
-      <div>Диалог</div>
-    {/* {chat?.map((el) => <h1 key={el.id} >{`${el.lawyer_messages}, ${el.client_messages}`}</h1>)} */}
-      {/* <form onSubmit={}>
-       
-       <button type='submit' onClick={postFetch}>123</button> 
-      </form> */}
-      
+  <>
+  <div className="dialog__bar" >Диалог</div>
+    <div style={{display:"flex"}}>
+ {chats?.map(el => <ChatList key={el.id} data={el} />)} 
+    </div>
     </>
   );
 }

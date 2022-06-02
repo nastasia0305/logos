@@ -14,6 +14,9 @@ import Error from '../Error'
 import Profile from '../Profile'
 import UpdateProfile from '../UpdateProfile'
 import ConfirmEducation from '../ConfirmEducation'
+import Admin from '../Admin'
+import AdminNewsUpdate from '../AdminNewsUpdate'
+import AdminNewsCreate from '../AdminNewsCreate'
 
 import { checkAuth } from '../../redux/thunk/asyncUsers'
 
@@ -22,11 +25,7 @@ function App() {
 
   const { session } = useSelector(state => state.session)
 
-
   useEffect(() => { dispatch(checkAuth()) }, [dispatch, session?.id])
-
-  
-
 
   return (
     <BrowserRouter>
@@ -40,6 +39,10 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="updateProfile" element={<UpdateProfile />} />
             <Route path="confirmEducation" element={<ConfirmEducation />} />
+            <Route path="admin" element={<Admin />}>
+              <Route path="news/:id" element={<AdminNewsUpdate />} />
+              <Route path="news/create" element={<AdminNewsCreate />} />
+            </Route>
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
