@@ -9,8 +9,6 @@ export const anketaReducer = (state = initialState, action) => {
     }
 
     case "GET_ALL_REQUEST": {
-      console.log(action.payload, '>>>>>>')
-
       return { ...state, allRequest: [...state.allRequest, action.payload] }
     }
     default: {

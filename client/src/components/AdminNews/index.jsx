@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -8,6 +8,7 @@ import { activateNews, getNews } from "../../redux/thunk/admin"
 function AdminNews() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [state, setState] = useState(0)
 
   const { news } = useSelector(state => state.admin)
 
