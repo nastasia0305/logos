@@ -7,7 +7,10 @@ export const adminReducer = (state = initialState, action) => {
     }
 
     case 'VALIDATE_LAWYER': {
-      return { ...state, lawyers: action.payload }
+      const index = state.lawyers.findIndex(item => item.id === action.payload.id)
+      state.lawyers.splice(index, 1, action.payload)
+
+      return state
     }
 
     case 'GET_NEWS': {
@@ -17,9 +20,7 @@ export const adminReducer = (state = initialState, action) => {
     case 'UPDATE_NEWS': {
       const news = state.news.map(item => {
         if (item.id === action.payload.id) {
-          item.title = action.payload.title
-          item.text = action.payload.text
-          item.isActive = action.payload.isActive
+          item = action.payload
         }
 
         return item
@@ -29,15 +30,10 @@ export const adminReducer = (state = initialState, action) => {
     }
 
     case 'ACTIVATE_NEWS': {
-      const news = state.news.map(item => {
-        if (item.id === action.payload.id) {
-          item.isActive = action.payload.isActive
-        }
+      const index = state.news.findIndex(item => item.id === action.payload.id)
+      state.news.splice(index, 1, action.payload)
 
-        return item
-      })
-      
-      return { ...state, news }
+      return state
     }
 
     case 'REMOVE_NEWS': {

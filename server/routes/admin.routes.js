@@ -15,7 +15,7 @@ router.get('/lawyers', async (req, res) => {
   }
 
   try {
-    const lawyersResponse = await Lawyer.findAll({ where: { isValidate: { [Op.not]: true } } });
+    const lawyersResponse = await Lawyer.findAll({ where: { isValidate: { [Op.not]: true } }, order: [['updatedAt', 'DESC']] });
     const result = await Promise.all(lawyersResponse.map((lawyer) => {
       if (lawyer.get && typeof lawyer.get === 'function') {
         return lawyer.get();
@@ -39,10 +39,12 @@ router.put('/lawyers', async (req, res) => {
   try {
     const { id } = req.body;
 
-    const lawyersResponse = await Lawyer.update({ isValidate: true }, { where: { id } });
-    const result = lawyersResponse.length > 0;
+    const lawyerResponse = await Lawyer.update({ isValidate: true }, { where: { id } });
+    const isUpdated = lawyerResponse.length > 0;
+    const updatedLawyer = await Lawyer.findOne({ where: { id } });
+    const result = typeof updatedLawyer.get === 'function' ? updatedLawyer.get() : updatedLawyer;
 
-    res.status(result ? 200 : 400).json(result);
+    res.status(isUpdated ? 200 : 400).json(result);
   } catch (error) {
     res.status(404).json({ message: error });
   }
