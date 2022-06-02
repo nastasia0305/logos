@@ -29,13 +29,11 @@ function Case(props) {
   const [state, setState] = useState('')
   const dispatch = useDispatch()
   const { anketa } = useSelector(state => state.anketa)
-  console.log("🚀 ~ AnketaStatus ~ anketa", anketa)
   const getStatusForm = (event) => {
     event.preventDefault()
     const data = {
       cases: event.target.case.value
     }
-    console.log("🚀 ~ getStatusForm ~ data", data)
     dispatch({ type: "ADD_ANKETA", payload: data })
     setState('next')
   }

@@ -12,11 +12,13 @@ import { getAllRequest } from '../../redux/thunk/getAllRequest'
 function Profile() {
   const dispatch = useDispatch()
   const { session } = useSelector(store => store.session)
+  const { anketa } = useSelector(store => store.anketa)
+  const messageReq = anketa.message
   const { isLawyer, isValidate } = session
   const { support } = useSelector(store => store.support)
   const { message } = support
   const [state, setState] = useState(1)
-
+  const { id } = session
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -27,7 +29,7 @@ function Profile() {
   }
 
   const sendFetchToRequest = () => {
-    dispatch(getAllRequest())
+    dispatch(getAllRequest(id))
     setState(5)
   }
 
@@ -47,10 +49,10 @@ function Profile() {
         return <Chats />
       }
       case 3: {
-        return message ? <h4>{message}</h4> : <Support />
+        return message ? <h2>{message}</h2> : <Support />
       }
       case 4: {
-        return <RequestLawyer />
+        return messageReq ? <h2>{messageReq}</h2> : <RequestLawyer />
       }
       case 5: {
         return <TakeOrder />

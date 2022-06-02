@@ -12,16 +12,28 @@ export const addAnketa = (data) => {
   }
 }
 
-export const addLawyerId = (data, id) => {
+export const addLawyerIdDecline = (param) => {
   return (dispatch) => {
-    fetch(`/add/lawyer_id/${data}`, {
+    fetch(`/decline/lawyer_id/${param.lawyer_id}/${param.id}`, {
       headers: { 'content-type': 'application/json' },
       method: 'PUT',
-      body: JSON.stringify(id),
     })
-    // .then(response => response.json())
-    // .then(data => dispatch({ type: "ADD_LAWYER_ID", payload: data }))
-    // .catch(error => console.error(error))
+  }
+}
+export const updateRequest = (param) => {
+  return (dispatch) => {
+    fetch(`/update/request/lawyer_id/${param.lawyer_id}/${param.id}`, {
+      headers: { 'content-type': 'application/json' },
+      method: 'PUT',
+    })
+  }
+}
+export const addLawyerIdAccept = (param) => {
+  return (dispatch) => {
+    fetch(`/decline/lawyer_id/${param.lawyer_id}/${param.id}`, {
+      headers: { 'content-type': 'application/json' },
+      method: 'GET',
+    })
   }
 }
 

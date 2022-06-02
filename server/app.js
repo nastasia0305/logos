@@ -20,8 +20,10 @@ app.use('/logout', logoutRouter);
 app.use('/', sessionRouter);
 app.use('/add', require('./routes/support.routes'));
 app.use('/add', require('./routes/anketa.routes'));
-app.use('/add', require('./routes/anketa.routes'));
+app.use('/accept', require('./routes/anketa.routes'));
+app.use('/decline', require('./routes/anketa.routes'));
 app.use('/', require('./routes/anketa.routes'));
+app.use('/lawyer', require('./routes/anketa.routes'));
 
 app.use('/getsession', sessionRouter);
 app.use('/updateProfile', updateProfileRouter);

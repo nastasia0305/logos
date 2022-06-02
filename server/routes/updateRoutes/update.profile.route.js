@@ -20,6 +20,7 @@ router.put('/', async (req, res) => {
       await Lawyer.update({
         firstname, lastname, fathersname, email, city,
       }, { where: { email: currentUserEmail } });
+
       const updatedLawyer = await Lawyer.findOne({ where: { email } });
       req.session.user = updatedLawyer;
       console.log('console=====>', updatedLawyer);
