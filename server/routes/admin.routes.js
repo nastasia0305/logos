@@ -148,9 +148,9 @@ router.delete('/news', async (req, res) => {
     const { id } = req.body;
 
     const newsResponse = await News.destroy({ where: { id } });
-    const result = newsResponse > 0;
+    const isRemoved = newsResponse > 0;
 
-    res.status(result ? 200 : 400).json(result);
+    res.status(isRemoved ? 200 : 400).json(id);
   } catch (error) {
     res.status(404).json({ message: error });
   }

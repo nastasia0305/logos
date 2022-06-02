@@ -37,11 +37,16 @@ export const adminReducer = (state = initialState, action) => {
     }
 
     case 'REMOVE_NEWS': {
-      return { ...state, news: state.news.filter(el => el.id !== action.payload)}
+      const index = state.news.findIndex(item => item.id === action.payload)
+      state.news.splice(index, 1)
+
+      return state
     }
 
     case 'CREATE_NEWS': {
-      return {...state, news:[...state.news, action.payload] }
+      state.news.push(action.payload)
+      
+      return state
     }
 
     case 'GET_ALL_ORDERS': {
