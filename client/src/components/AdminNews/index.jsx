@@ -57,7 +57,11 @@ function AdminNews() {
       </div>
     }
 
-    return <div className="row row--center"><h3>Новых данных нет</h3></div>
+    return  <> 
+    <div className="row row--center"><h3>Новостей нет</h3></div>
+    <div><button onClick={() => navigate(`/admin/news/create`)} className="button shadow">Создать новость</button></div>
+    
+    </>
   }
 
   return renderContent()

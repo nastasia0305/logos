@@ -7,7 +7,7 @@ function ChatList({ data }) {
     <>
     <div>
     <div className="orderCard">
-        <p style={{ marginTop: '10px', textAlign: 'center' }}> <strong>Имя юриста: </strong> {data.lawyerName}</p>
+        <p style={{ marginTop: '10px', textAlign: 'center' }}> <strong>Имя юриста:</strong> {data.lawyerName}</p>
         <p><strong>Статус :</strong> {data.statusClient}</p>
         <p><strong>Характер дела : </strong> {data.case}</p>
         <p><strong>Предполагаемая услуга : </strong> {data.service}</p>

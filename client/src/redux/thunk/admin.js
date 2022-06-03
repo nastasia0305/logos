@@ -104,3 +104,12 @@ export const deleteOrder = (id) => {
   }
 }
 
+export const showDocs = (id) => {
+  return (dispatch)=> {
+    console.log(id)
+    fetch(`/admin/showdocs/${id}`)
+    .then(res => res.json())
+    .then(data => dispatch({ type: 'SHOW_DOCS', payload: data }))
+    .catch(error => console.error(error))
+  }}
+
