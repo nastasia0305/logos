@@ -45,20 +45,20 @@ export const adminReducer = (state = initialState, action) => {
 
     case 'CREATE_NEWS': {
       state.news.push(action.payload)
-      
+
       return state
     }
 
     case 'GET_ALL_ORDERS': {
       return { ...state, orders: action.payload }
     }
-    
+
     case 'DELETE_ORDER': {
-      return { ...state, orders: state.orders.filter(el => el.id !== action.payload)}
+      return { ...state, orders: state.orders.filter(el => el.id !== Number(action.payload) )}
     }
 
     case 'SHOW_DOCS': {
-      return { ...state, docs: action.payload}
+      return { ...state, docs: action.payload }
     }
 
     default: {

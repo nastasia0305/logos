@@ -101,10 +101,42 @@
   width: 30%;
   margin-left: 200px;
   margin-top: 25px;
+  background-color: tomato;
+}
 
+.btn-req__del {
+  width: fit-content;
+  margin: 15px;
 }
 
 .btn-changeProfile {
   width: 30%;
   margin-top: 40px;
+}
+
+.docWrapper {
+  display: flex;
+  margin-top: 100px;
+  width: fit-content;
+  height: fit-content;
+  background-color: #fff;
+}
+
+.btn-doc {
+  width: 10%;
+  margin-left: 45%;
+  margin-top: 50px;
+
+}
+
+.doc__element {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.doc__p {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 18px;
 }
