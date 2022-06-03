@@ -10,13 +10,13 @@ function Login() {
   const navigate = useNavigate()
 
   const { session } = useSelector(store => store.session)
-// TODO: если сессия админа сделать навигацию на /admin вместо /profile
+  // TODO: если сессия админа сделать навигацию на /admin вместо /profile
   // const { isAdmin } = session
   const { id } = session
 
   const checkAuth = () => {
     if (id) {
-      return <Navigate to="/profile" replace={ true } />
+      return <Navigate to="/profile" replace={true} />
     }
   }
 
@@ -24,15 +24,15 @@ function Login() {
     event.preventDefault()
 
     dispatch(
-      loginUser({ 
-        email: event.target.email.value, 
+      loginUser({
+        email: event.target.email.value,
         password: event.target.password.value
       })
     )
-  
+
     navigate('/profile')
   }
-  
+
   return (
     <div className="dialog shadow">
       {checkAuth()}
@@ -47,7 +47,7 @@ function Login() {
           <label htmlFor="password" className="label">Пароль</label>
           <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
         </div>
-        <button type="submit" className="button shadow">Войти</button>
+        <button type="submit" className="button shadow" style={{ margin: '0 auto' }}>Войти</button>
       </form>
     </div>
   )

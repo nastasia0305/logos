@@ -20,7 +20,7 @@ function Anketa(props) {
         </div>
       </div>
       <div className="window-body">
-        <p>Если у вас нет информации об особенностях вашей ситуации, система сама подберет Вам юриста по запросу общего характера. Можете ли Вы охарактеризовать свою проблему?</p>
+        <p>Если у вас нет информации об особенностях вашей ситуации, система сама подберет Вам юриста по запросу общего характера. <hr /><br />Можете ли Вы охарактеризовать свою проблему?</p>
         <fieldset style={{ marginTop: "20px" }}>
           <div className="field-row">
             <input className='cb pristine' style={{ marginBottom: '10px' }} id="radio10" type="radio" name="fieldset-example"
@@ -36,7 +36,7 @@ function Anketa(props) {
           </div>
         </fieldset>
         {value === 'yes' ? <AnketaStatus /> : ''}
-        {value === 'no' ? <button onClick={sendDefaultAnketa} className='button shadow' style={{ marginTop: "20px" }}>Запросить юриста</button> : ''}
+        {value === 'no' ? <button onClick={sendDefaultAnketa} className='button btn-anketa' style={{ marginTop: "20px" }}>Запросить юриста</button> : ''}
       </div >
     </div >
   );
