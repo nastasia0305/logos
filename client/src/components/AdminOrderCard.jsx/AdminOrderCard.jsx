@@ -7,12 +7,12 @@ function AdminOrderCard({ data }) {
 
   const delOrder = (event) => {
     event.preventDefault();
-       dispatch(deleteOrder(data.id));
+    dispatch(deleteOrder(data.id));
   };
 
   return (
     <>
-      <div className="orderCard">
+      <div style={{height: 'fit-content'}} className="orderCard">
         <p style={{ marginTop: "10px", textAlign: "center" }}>
           {" "}
           Имя клиента: {data.clientName}{" "}
@@ -21,8 +21,9 @@ function AdminOrderCard({ data }) {
         <p> Характер дела: {data.case} </p>
         <p> Предпологаемая услуга: {data.service} </p>
         <p> Вид помощи: {data.help} </p>
+        <p> Статус заказа: {data.condition} </p>
         <div className="card-btn">
-          <button className='button shadow card__btn-decline' onClick={delOrder}>Удалить</button>
+          <button className='button button-decline' onClick={delOrder}>Удалить</button>
         </div>
       </div>
     </>

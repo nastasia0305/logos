@@ -1,4 +1,4 @@
-const initialState = { lawyers: [], news: [], orders: [] }
+const initialState = { lawyers: [], news: [], orders: [], docs: [] }
 
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -55,6 +55,10 @@ export const adminReducer = (state = initialState, action) => {
     
     case 'DELETE_ORDER': {
       return { ...state, orders: state.orders.filter(el => el.id !== action.payload)}
+    }
+
+    case 'SHOW_DOCS': {
+      return { ...state, docs: action.payload}
     }
 
     default: {

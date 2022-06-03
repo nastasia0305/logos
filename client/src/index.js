@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux'
 
 import './assets/index.css';
+import './assets/card.css';
 import './assets/misc.css';
 import './assets/buttons.css';
 import './assets/controls.css';

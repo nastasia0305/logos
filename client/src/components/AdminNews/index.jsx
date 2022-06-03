@@ -11,7 +11,7 @@ function AdminNews() {
 
   const { news } = useSelector(state => state.admin)
 
-  useEffect(() => dispatch(getNews()), [ dispatch ])
+  useEffect(() => dispatch(getNews()), [dispatch])
 
   const activate = (data) => {
     dispatch(activateNews(data))
@@ -29,6 +29,7 @@ function AdminNews() {
     </thead>
   }
 
+
   const renderItem = (item) => {
     return <tr key={'news-' + item.id}>
       <td className="text--center">{item.title}</td>
@@ -37,6 +38,7 @@ function AdminNews() {
       <td className="text--center">
         <button onClick={() => navigate(`/admin/news/${item.id}`)} className="button shadow">Редактировать</button>
         <button onClick={() => activate({ id: item.id, isActive: !item.isActive})} className="button shadow">{item.isActive ? 'Снять с публикации' : 'Опубликовать'}</button>
+
       </td>
     </tr>
   }
@@ -56,7 +58,11 @@ function AdminNews() {
       </div>
     }
 
-    return <div className="row row--center"><h3>Новых данных нет</h3></div>
+    return  <> 
+    <div className="row row--center"><h3>Новостей нет</h3></div>
+    <div><button onClick={() => navigate(`/admin/news/create`)} className="button shadow">Создать новость</button></div>
+    
+    </>
   }
 
   return renderContent()

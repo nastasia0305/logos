@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     condition: {
       type: DataTypes.TEXT,
-      defaultValue: 'отправлено',
+      defaultValue: 'new',
     },
     lawyer_id: {
       type: DataTypes.INTEGER,

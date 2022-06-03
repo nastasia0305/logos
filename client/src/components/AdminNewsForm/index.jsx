@@ -49,16 +49,16 @@ function Form({ method, data = {} }) {
   return (
     <form onSubmit={method === 'update' ? update : create} className="form">
       <div className="row">
-          <label htmlFor="title" className="label">Заголовок</label>
-          <input type="title" className="input" name="title" placeholder="Заголовок" defaultValue={data.title} required />
+        <label htmlFor="title" className="label">Заголовок</label>
+        <input type="title" className="input" name="title" placeholder="Заголовок" defaultValue={data.title} required />
       </div>
       <div className="row">
-          <label htmlFor="text" className="label">Текст</label>
-          <textarea className="input textarea" name="text" placeholder="Текст" defaultValue={data.text} required />
+        <label htmlFor="text" className="label">Текст</label>
+        <textarea className="input textarea" name="text" placeholder="Текст" defaultValue={data.text} required />
       </div>
       <div className="row row--right">
         {renderRemoveButton()}
-        <button type="submit" className="button shadow">{method === 'update' ? 'Обновить' : 'Создать'}</button>
+        <button type="submit" className="button ">{method === 'update' ? 'Обновить' : 'Создать'}</button>
       </div>
     </form>
   )

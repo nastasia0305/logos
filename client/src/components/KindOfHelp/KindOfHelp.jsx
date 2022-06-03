@@ -31,7 +31,7 @@ function KindOfHelp(props) {
               <input className='cb pristine' id="radio6" type="radio" name="kindOfHelp" value=' Регулярное сотрудничество' />
               <label htmlFor="radio6"> Регулярное сотрудничество</label>
             </div>
-            <button type='submit' className='button shadow'>OK</button>
+            <button type='submit' className='button btn-anketa'>OK</button>
           </div>
         </form>
 

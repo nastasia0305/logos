@@ -9,17 +9,17 @@ function Main() {
 
   const { news } = useSelector(state => state.news)
 
-  useEffect(() => dispatch(getNews()), [ dispatch ])
+  useEffect(() => dispatch(getNews()), [dispatch])
 
   const renderItem = ({ id, title, text, updatedAt }) => {
     return <div className="col" key={'news-' + id}>
-      <div className="row row--center"><h4>{title}</h4></div>
-      <div>{text}</div>
+      <div className="row row--center"><h2>{title}</h2></div>
+      <div className='greeting-p'>{text}</div>
       <br />
       <hr />
       <div className="row row--right caption">Опубликовано: {new Date(updatedAt).toLocaleDateString('ru')}</div>
       <br /><br />
-    </div>
+    </div>  
   }
 
   const renderList = () => {

@@ -60,7 +60,7 @@ function AnketaStatus(props) {
                   <label htmlFor="radio5"> ЮЛ</label>
                 </div>
               </div>
-              <button type='submit' className='button shadow' >OK</button>
+              <button type='submit' className='button btn-anketa' >OK</button>
             </div>
           </div>
         </form>

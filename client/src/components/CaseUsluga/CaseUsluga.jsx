@@ -24,7 +24,6 @@ function CaseUsluga(props) {
   const { anketa } = useSelector(state => state.anketa)
   const { session } = useSelector(state => state.session)
   const { id, firstname, lastname, fathersname } = session
-  console.log("🚀 ~ CaseUsluga ~ lastname", lastname)
   const getStatusForm = (event) => {
     event.preventDefault()
     const data = {
@@ -47,7 +46,7 @@ function CaseUsluga(props) {
           <div className="supWrap">
             {caseUsluga.map((elem, idx) => <CaseCheckbox2 key={elem} value={elem} idx={idx + 23} />)}
           </div>
-          <button type='submit' className='button shadow'>OK</button>
+          <button type='submit' className='button btn-anketa'>OK</button>
         </div>
       </form>
     </>

@@ -2,10 +2,10 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const sessionConfig = {
-  store: new FileStore(), 
+  store: new FileStore({ logFn() { } }),
   key: 'user_uid', // ключ - название куки
   secret: process.env.SESSION_SECRET ?? 'logossecret',
-  resave: true, 
+  resave: true,
   saveUninitialized: false, // настройка для создания сессии, даже без авторизации
   cookie: {
     expires: 1000 * 60 * 60 * 24, // время "протухания" куки в миллисекундах

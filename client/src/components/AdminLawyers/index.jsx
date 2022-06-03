@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getLawyers, validateLawyer } from '../../redux/thunk/admin'
+import ShowDocuments from '../ShowDocuments/ShowDocuments'
 
 function AdminLawyers() {
   const dispatch = useDispatch()
@@ -46,8 +47,8 @@ function AdminLawyers() {
       <td className="text--center">{item.firstname}</td>
       <td className="text--center">{item.lastname}</td>
       <td className="text--center">{item.city}</td>
-      <td className="text--center">
-        {/* <img src ="{lawyer.certificate}></img>{lawyer.diploma} */}
+      <td className="text--center"><button onClick={() => navigate(`/admin/showdocs/${item.id}`)} className="button shadow">Посмотреть документы</button>
+        {/* <img src ="{lawyer.certificate}></img> */}
       </td>
       <td className="text--center">
         <button onClick={() => validate(item.id)} className="button shadow">Утвердить</button>
@@ -64,7 +65,7 @@ function AdminLawyers() {
       return <table className="table">{renderHeader()}{renderList()}</table>
     }
 
-    return <div className="row row--center"><h3>Новых данных нет</h3></div>
+    return <div className="row row--center"><h3>Заявок нет</h3></div>
   }
 
   return renderContent()

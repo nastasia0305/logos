@@ -17,22 +17,77 @@ router
       service,
       clientName: fullName,
     });
-    console.log('🚀 ~ .post ~ newRequest', newRequest);
-    await StatusAnket.create({
-      anketa_id: newRequest.id,
-    });
-    // const one = await Request.findAll();
-    // console.log('🚀 ~ .post ~ one', one);
+
     res.status(200).json({ message: 'Ваша заявка отправлена к нашим юристам. Ожидайте ответа специалиста.' });
   })
-  .get('/request', async (req, res) => {
-    const allRequest = await Request.findAll();
-    res.status(200).json(allRequest);
+  .get('/request/own', async (req, res) => {
+    const { id } = req.session.user;
+    console.log('🚀 ~ .get ~ id', id);
+    const ownLawyerRequest = await Request.findAll({
+      where: {
+        lawyer_id: id,
+      },
+    });
+    res.status(200).json(ownLawyerRequest);
   })
-  .put('/lawyer_id/:id', (req, res) => {
-    // const { id } = req.body;
-    // console.log('🚀 ~ .put ~ id', id);
-    const idReq = req.params;
-    console.log('🚀 ~ .put ~ idReq', idReq);
+  .get('/request/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log('🚀 ~ .get ~ id', id);
+    const allAnket = await Request.findAll({
+      where: {
+        condition: 'new',
+      },
+      raw: true,
+    });
+    const allStatusAnket = await StatusAnket.findAll({
+      where: {
+        lawyer_id: id,
+        status: 'decline',
+      },
+    });
+
+    const dontShowRequest = allStatusAnket.map((elem) => elem.anketa_id);
+    console.log('🚀 ~ .get ~ dontShowRequest', dontShowRequest);
+
+    const result = allAnket.filter((elem) => !dontShowRequest.includes(elem.id));
+    console.log('🚀 ~ .get ~ result', result);
+
+    res.status(200).json(result);
+  })
+
+  // Decline
+  .put('/lawyer_id/:lawyer_id/:id', async (req, res) => {
+    // eslint-disable-next-line camelcase
+    const { lawyer_id, id } = req.params;
+
+    await StatusAnket.create({
+      // eslint-disable-next-line camelcase
+      anketa_id: id,
+      lawyer_id,
+      status: 'decline',
+    });
+  })
+
+  // Accept
+  .get('/lawyer_id/:lawyer_id/:id', async (req, res) => {
+    const { lawyer_id, id } = req.params;
+    await StatusAnket.create({
+      // eslint-disable-next-line camelcase
+      anketa_id: id,
+      lawyer_id,
+      status: 'accept',
+
+    });
+  })
+
+  .put('/update/request/lawyer_id/:lawyer_id/:id', async (req, res) => {
+    const { lawyer_id, id } = req.params;
+    const { firstname, lastname } = req.session.user;
+    const fullLawyerName = `${lastname} ${firstname}`;
+    await Request.update({
+      lawyer_id,
+      lawyerName: fullLawyerName,
+      condition: 'inWork',
+    }, { where: { id } });
   });
 module.exports = router;
