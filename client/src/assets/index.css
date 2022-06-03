@@ -9,11 +9,12 @@ html,
 
 body {
   font-family: 'Kurale', serif;
+  /* background-color: rgba(83, 112, 207, 0.637); */
   background: url('https://xakep.ru/wp-content/uploads/2022/01/369619/justice-h.jpg');
-  background-repeat: no-repeat;
+  /* background: url('https://static.insales-cdn.com/images/products/1/4302/214233294/%D0%BC%D0%BA2019.png'); */
+  /* background-repeat: no-repeat; */
   background-position: center;
   background-size: contain;
-  height: 100vh;
 }
 
 #root {
