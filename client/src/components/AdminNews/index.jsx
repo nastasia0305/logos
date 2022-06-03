@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -8,7 +8,6 @@ import { activateNews, getNews } from "../../redux/thunk/admin"
 function AdminNews() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [state, setState] = useState(0)
 
   const { news } = useSelector(state => state.admin)
 
@@ -30,14 +29,16 @@ function AdminNews() {
     </thead>
   }
 
-  const renderItem = ({ id, title, text, isActive }) => {
-    return <tr key={'news-' + id}>
-      <td className="text--center">{title}</td>
-      <td className="text--center">{text}</td>
-      <td className="text--center">{isActive ? 'Да' : 'Нет'}</td>
+
+  const renderItem = (item) => {
+    return <tr key={'news-' + item.id}>
+      <td className="text--center">{item.title}</td>
+      <td className="text--center">{item.text}</td>
+      <td className="text--center">{item.isActive ? 'Да' : 'Нет'}</td>
       <td className="text--center">
-        <button onClick={() => navigate(`/admin/news/${id}`)} className="button btn-news">Редактировать</button>
-        <button onClick={() => activate({ id, isActive: !isActive })} className="button btn-news">{isActive ? 'Снять с публикации' : 'Опубликовать'}</button>
+        <button onClick={() => navigate(`/admin/news/${item.id}`)} className="button shadow">Редактировать</button>
+        <button onClick={() => activate({ id: item.id, isActive: !item.isActive})} className="button shadow">{item.isActive ? 'Снять с публикации' : 'Опубликовать'}</button>
+
       </td>
     </tr>
   }
