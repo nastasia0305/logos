@@ -19,6 +19,7 @@ import AdminNewsUpdate from '../AdminNewsUpdate'
 import AdminNewsCreate from '../AdminNewsCreate'
 
 import { checkAuth } from '../../redux/thunk/asyncUsers'
+import ShowDocuments from '../ShowDocuments/ShowDocuments'
 
 function App() {
   const dispatch = useDispatch()
@@ -42,6 +43,7 @@ function App() {
             <Route path="admin" element={<Admin />}>
               <Route path="news/:id" element={<AdminNewsUpdate />} />
               <Route path="news/create" element={<AdminNewsCreate />} />
+              <Route path="showdocs/:id" element={<ShowDocuments />} />
             </Route>
             <Route path="*" element={<Error />} />
           </Route>

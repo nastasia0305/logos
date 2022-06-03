@@ -62,6 +62,7 @@ function ConfirmEducation() {
     navigate("/profile");
   };
 
+
   return (
     <div className="dialog">
       <div className="dialog__bar">Подтверждение образования</div>
@@ -106,7 +107,7 @@ function ConfirmEducation() {
             className="input"
             name="education"
             placeholder="Образование"
-          />
+          required />
         </div>
         <div className="row">
           <label htmlFor="experience" className="label">
@@ -117,7 +118,7 @@ function ConfirmEducation() {
             className="input"
             name="experience"
             placeholder="Опыт работы"
-          />
+         required />
         </div>
         <div className="row">
           <label htmlFor="diploma" className="label">
@@ -159,6 +160,8 @@ function ConfirmEducation() {
           Отправить на рассмотрение
         </button>
       </form>
+      {/* <div className="loader">
+ </div> */}
       <p>Image Url 1: {imageURL}</p>
       <p>Image Url 2: {imageURL2}</p>
       <p>Image Url 3: {imageURL3}</p>
