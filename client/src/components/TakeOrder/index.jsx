@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import OrderCard from '../OrderCard/OrderCard'
 
 function TakeOrder() {
-  const allRequest = useSelector(state => state.request.allRequest)
+const [allRequest] = useSelector(state => state.request.allRequest)
   return (
     <>
       <div className="dialog__bar">Активные заявки</div>
