@@ -46,7 +46,7 @@ function CaseUsluga(props) {
           <div className="supWrap">
             {caseUsluga.map((elem, idx) => <CaseCheckbox2 key={elem} value={elem} idx={idx + 23} />)}
           </div>
-          <button type='submit' className='button shadow'>OK</button>
+          <button type='submit' className='button btn-anketa'>OK</button>
         </div>
       </form>
     </>
