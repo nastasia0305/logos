@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -8,9 +8,11 @@ import Support from '../Support'
 import RequestLawyer from '../RequestLawyer'
 import TakeOrder from '../TakeOrder'
 import { getAllRequest } from '../../redux/thunk/getAllRequest'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function Profile() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { session } = useSelector(store => store.session)
   const { anketa } = useSelector(store => store.anketa)
   const messageReq = anketa.message
@@ -19,6 +21,9 @@ function Profile() {
   const { message } = support
   const [state, setState] = useState(1)
   const { id } = session
+
+console.log(session);
+
 
   const getButtonClassName = (index) => {
     const result = ['button', 'shadow']
@@ -65,8 +70,21 @@ function Profile() {
     }
   }
 
+// useEffect(() => {
+//   if (session.isAdmin) {
+//     return <Navigate to="/admin" replace={true} />
+//   }
+// }, [])
+
+  const checkAdmin = () => {
+    if (session.isAdmin) {
+      return <Navigate to="/admin" replace={true} />
+    }
+  }
+
   return (
     <div className="dialog dialog--full-width">
+      {checkAdmin()}
       {/* TODO: написать в подобных страницах проверку на наличие сессии, иначе редиректить на главную, пример смотреть на страницах логина и регистрации, функция checkAuth */}
       <div className="dialog__bar">Личный кабинет</div>
       <div className="profile">
