@@ -16,6 +16,7 @@
 .orderCard p {
   font-size: 20px;
   text-align: center;
+  height: fit-content;
 }
 
 /* .card-btn {

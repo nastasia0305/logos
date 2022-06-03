@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const { Request } = require('../../db/models');
 
 router.get('/allchats', async (req, res) => {
@@ -10,6 +11,7 @@ router.get('/allchats', async (req, res) => {
   }
   res.status(200).json(allRequests);
 });
+
 
 router.get('/allOrders', async (req, res) => {
   const allOrders = await Request.findAll();
