@@ -23,17 +23,16 @@ router
   .get('/request/own', async (req, res) => {
     const { id } = req.session.user;
     console.log('🚀 ~ .get ~ id', id);
-
     const ownLawyerRequest = await Request.findAll({
       where: {
         lawyer_id: id,
       },
     });
     res.status(200).json(ownLawyerRequest);
-    console.log('🚀 ~ .get ~ ownLawyerReauest', ownLawyerRequest);
   })
   .get('/request/:id', async (req, res) => {
     const { id } = req.params;
+    console.log('🚀 ~ .get ~ id', id);
     const allAnket = await Request.findAll({
       where: {
         condition: 'new',
@@ -48,6 +47,7 @@ router
     });
 
     const dontShowRequest = allStatusAnket.map((elem) => elem.anketa_id);
+    console.log('🚀 ~ .get ~ dontShowRequest', dontShowRequest);
 
     const result = allAnket.filter((elem) => !dontShowRequest.includes(elem.id));
     console.log('🚀 ~ .get ~ result', result);
@@ -76,12 +76,18 @@ router
       anketa_id: id,
       lawyer_id,
       status: 'accept',
+
     });
   })
+
   .put('/update/request/lawyer_id/:lawyer_id/:id', async (req, res) => {
     const { lawyer_id, id } = req.params;
+    const { firstname, lastname } = req.session.user;
+    const fullLawyerName = `${lastname} ${firstname}`;
     await Request.update({
       lawyer_id,
+      lawyerName: fullLawyerName,
+      condition: 'inWork',
     }, { where: { id } });
   });
 module.exports = router;

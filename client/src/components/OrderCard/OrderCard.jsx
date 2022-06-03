@@ -23,15 +23,17 @@ function OrderCard({ data }) {
 
   return (
     <>
-      <div className="orderCard">
-        <p style={{ marginTop: '10px', textAlign: 'center' }}> <strong>Имя : </strong> {data.clientName}</p>
-        <p><strong>Статус :</strong> {data.statusClient}</p>
-        <p><strong>Характер дела : </strong> {data.case}</p>
-        <p><strong>Предполагаемая услуга : </strong> {data.service}</p>
-        <p><strong>Вид помощи : </strong> {data.help}</p>
+      <div className="card">
+        <div className="card__text">
+          <p style={{ marginTop: '10px' }}> <strong>Имя : </strong> {data.clientName}</p>
+          <p><strong>Статус :</strong> {data.statusClient}</p>
+          <p><strong>Характер дела : </strong> {data.case}</p>
+          <p><strong>Предполагаемая услуга : </strong> {data.service}</p>
+          <p><strong>Вид помощи : </strong> {data.help}</p>
+        </div>
         <div className="card-btn">
-          <button className='button shadow card__btn-accept' onClick={fetchAccept}>Принять</button>
-          <button className='button shadow card__btn-decline' onClick={fetchDecline}>Отклонить</button>
+          <button className='button button-accept' onClick={fetchAccept}>Принять</button>
+          <button className='button button-decline' onClick={fetchDecline}>Отклонить</button>
         </div>
       </div>
     </>

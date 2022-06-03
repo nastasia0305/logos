@@ -56,7 +56,7 @@ function Registration(props) {
           <label htmlFor="password" className="label">Пароль</label>
           <input type="password" className="input" name="password" autoComplete="password" placeholder="Пароль" required />
         </div>
-        <button type="submit" className="button shadow">Зарегистрироваться</button>
+        <button type="submit" className="button" style={{ margin: '0 auto' }}>Зарегистрироваться</button>
       </form>
     </div>
   )

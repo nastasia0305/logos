@@ -22,7 +22,7 @@ function Support(props) {
   }
   return (
     <>
-      <p>Здесь вы можете задать интересующие Вас вопросы администрации Logos.Также вы можете заказать звонок сотрудника платформы для получения устной консультации об использовании Logos и возможности партнерства.<br /><br />
+      <p className='greeting-p'>Здесь вы можете задать интересующие Вас вопросы администрации Logos.Также вы можете заказать звонок сотрудника платформы для получения устной консультации об использовании Logos и возможности партнерства. <hr /> <br /><br />
         Задать письменный вопрос :
       </p>
       <form onSubmit={supportHandler}>
@@ -32,12 +32,12 @@ function Support(props) {
               <textarea className="input-at" name="messageToSupport" placeholder="Ваше сообщение" ></textarea>
               <span className="focus-input-at"></span>
             </div>
-            <div>Заказать бесплатный звонок сотрудника Logos. Укажите краткую информация о вашем вопросе :</div>
+            <p className='greeting-p'>Заказать бесплатный звонок сотрудника Logos. Укажите краткую информация о вашем вопросе :</p>
             <div className="validate-input-at w-50" data-validate="Обязательное поле">
               <input className="input-at" type="text" name="supportCall" placeholder="Ваш вопрос" />
               <span className="focus-input-at"></span>
             </div>
-            <button id="submit-at" className='button shadow'>Отправить</button>
+            <button id="submit-at" className='button btn-anketa'>Отправить</button>
           </div>
           <div className="result-at"></div>
         </div>

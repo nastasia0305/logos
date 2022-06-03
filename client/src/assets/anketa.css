@@ -19,10 +19,10 @@
   height: fit-content;
 }
 
-.card-btn {
+/* .card-btn {
   display: flex;
   margin: 20px auto;
-}
+} */
 
 .card__btn-accept {
   background-color: yellowgreen;

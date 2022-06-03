@@ -23,14 +23,14 @@ function Greeting() {
 
   const renderLawyerButton = () => {
     if (isValidate === false) {
-      return <button onClick={() => navigation('/confirmEducation')} className="button shadow">Подтвердить образование</button>
+      return <button onClick={() => navigation('/confirmEducation')} className="button btn-confirm">Подтвердить образование</button>
     }
   }
 
 
   const renderButtons = () => {
     return <div className="row row--right">
-      <button onClick={() => navigation('/updateProfile')} className="button shadow">Изменить профиль</button>
+      <button onClick={() => navigation('/updateProfile')} className="button btn-changeProfile">Изменить профиль</button>
       {renderLawyerButton()}
     </div>
   }
@@ -40,11 +40,11 @@ function Greeting() {
       <h2 className="row row--center">Уважаемый(-ая) {session.firstname} {session.fathersname ? session.fathersname : ''}!</h2>
 
       <br />
-      <p>Здесь Вы можете найти юриста и работать с ним в режиме реального времени.</p>
-      <p>Logos дает возможность найти юриста для любых целей и задач, а также легко и комфортно обмениваться информацией для эффектной работы.</p>
+      <p className='greeting-p'>Здесь Вы можете найти юриста и работать с ним в режиме реального времени.</p>
+      <p className='greeting-p'>Logos дает возможность найти юриста для любых целей и задач, а также легко и комфортно обмениваться информацией для эффектной работы.</p>
       <br />
 
-      <b className="row row--center">Добро пожаловать!</b>
+      <p className="row row--center greeting-p">Добро пожаловать!</p>
       {renderButtons()}
     </div>
   )

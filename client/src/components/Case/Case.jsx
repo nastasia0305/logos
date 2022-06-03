@@ -48,7 +48,7 @@ function Case(props) {
             <div className="supWrap">
               {caseData.map((elem, idx) => <CaseCheckbox key={elem} value={elem} idx={idx + 7} name={name} />)}
             </div>
-            <button type='submit' className='button shadow'>OK</button>  <br />
+            <button type='submit' className='button btn-anketa'>OK</button>  <br />
           </div>
         </form>
       }
