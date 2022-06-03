@@ -1,7 +1,8 @@
 const router = require("express").Router();
 
-const { Request } = require("../../db/models");
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
+const { Request } = require('../../db/models');
+
 
 router.get("/allchats", async (req, res) => {
   let allRequests;
@@ -10,14 +11,16 @@ router.get("/allchats", async (req, res) => {
       where: { lawyer_id: req.session.user.id },
     });
   } else {
-    allRequests = await Request.findAll({
-      where: { client_id: req.session.user.id, lawyer_id: { [Op.not]: null } },
-    });
+
+    allRequests = await Request.findAll({ where: { client_id: req.session.user.id, lawyer_id: { [Op.not]: null } } });
+
   }
   res.status(200).json(allRequests);
 });
 
+
 router.get("/allOrders", async (req, res) => {
+
   const allOrders = await Request.findAll();
   console.log(allOrders);
   res.status(200).json(allOrders);

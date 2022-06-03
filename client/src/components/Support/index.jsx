@@ -32,9 +32,9 @@ function Support(props) {
               <textarea className="input-at" name="messageToSupport" placeholder="Ваше сообщение" ></textarea>
               <span className="focus-input-at"></span>
             </div>
-            <p className='greeting-p'>Заказать бесплатный звонок сотрудника Logos. Укажите краткую информация о вашем вопросе :</p>
+            <p className='greeting-p'>Заказать бесплатный звонок сотрудника Logos. Укажите Ваш номер телефона :</p>
             <div className="validate-input-at w-50" data-validate="Обязательное поле">
-              <input className="input-at" type="text" name="supportCall" placeholder="Ваш вопрос" />
+              <input className="input-at" type="text" name="supportCall" placeholder="Ваш номер телефона" />
               <span className="focus-input-at"></span>
             </div>
             <button id="submit-at" className='button btn-anketa'>Отправить</button>

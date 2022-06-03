@@ -13,6 +13,7 @@ function Registration(props) {
 
   const { session } = useSelector(store => store.session)
   const { id } = session
+  
 
   const checkAuth = () => {
     if (id) {

@@ -12,7 +12,7 @@ function AdminOrderCard({ data }) {
 
   return (
     <>
-      <div style={{height: 'fit-content'}} className="orderCard">
+      <div style={{ height: 'fit-content' }} className="orderCard">
         <p style={{ marginTop: "10px", textAlign: "center" }}>
           {" "}
           Имя клиента: {data.clientName}{" "}
@@ -23,7 +23,7 @@ function AdminOrderCard({ data }) {
         <p> Вид помощи: {data.help} </p>
         <p> Статус заказа: {data.condition} </p>
         <div className="card-btn">
-          <button className='button button-decline' onClick={delOrder}>Удалить</button>
+          <button className="button btn-req__del" onClick={delOrder}>Удалить</button>
         </div>
       </div>
     </>

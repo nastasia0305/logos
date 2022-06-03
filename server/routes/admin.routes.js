@@ -164,9 +164,9 @@ router.delete('/deleteOrder/:id', async (req, res) => {
 });
 
 router.get('/showdocs/:id', async (req, res) => {
-  const { id } = req.params
-  const lawyer = await Lawyer.findOne({ where: { id }, raw: true})
-  res.status(200).json(lawyer)
-} )
+  const { id } = req.params;
+  const lawyer = await Lawyer.findOne({ where: { id }, raw: true });
+  res.status(200).json(lawyer);
+});
 
 module.exports = router;
