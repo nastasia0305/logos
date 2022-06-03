@@ -23,14 +23,14 @@ function Greeting() {
 
   const renderLawyerButton = () => {
     if (isValidate === false) {
-      return <button onClick={() => navigation('/confirmEducation')} className="button btn-confirm">Подтвердить образование</button>
+      return <button onClick={() => navigation('/confirmEducation')} className="button shadow btn-accept">Подтвердить образование</button>
     }
   }
 
 
   const renderButtons = () => {
     return <div className="row row--right">
-      <button onClick={() => navigation('/updateProfile')} className="button btn-changeProfile">Изменить профиль</button>
+      <button onClick={() => navigation('/updateProfile')} className="button shadow btn-changeProfile">Изменить профиль</button>
       {renderLawyerButton()}
     </div>
   }

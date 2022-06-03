@@ -19,15 +19,15 @@ function ShowDocuments({ data }) {
       <div className="docWrapper">
         <div className="doc__element">
           <p className='doc__p'>Сертификат: </p>
-          <div><img style={{ width: '500px', height: '300px' }} src={docs.certificate}></img></div>
+          <div><img src={docs.certificate}></img></div>
         </div>
         <div className="doc__element">
           <p className='doc__p'>Диплом: </p>
-          <div><img style={{ width: '500px', height: '300px' }} src={docs.diploma}></img></div>
+          <div><img src={docs.diploma}></img></div>
         </div>
         <div className="doc__element">
           <p className='doc__p'>Трудовая книжка: </p>
-          <div><img style={{ width: '500px', height: '300px' }} src={docs.employeBook}></img></div>
+          <div><img src={docs.employeBook}></img></div>
         </div>
       </div>
       <button className='button btn-doc' onClick={() => navigate('/admin')}>Назад</button>
