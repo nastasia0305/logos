@@ -21,10 +21,6 @@ config(app);
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
@@ -45,6 +41,10 @@ app.use('/', chatRouter);
 
 app.use('/admin', admin);
 app.use('/news', news);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
