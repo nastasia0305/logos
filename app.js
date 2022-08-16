@@ -47,7 +47,7 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-db.sync({ force: true });
+db.sequelize.sync({ force: true });
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
