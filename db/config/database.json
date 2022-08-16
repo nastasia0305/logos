@@ -1,13 +1,10 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "logos",
-    "host": "127.0.0.1",
+    "username": "hwcnlvayvlfdqh",
+    "password": "7b3eb77e1a94f18fa91f7165f3b1e10b2e8959eae43c5c875c911c1115e5bf6d",
+    "database": "d43jrnjb4vu1al",
+    "host": "ec2-99-80-170-190.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres"
-  },
-  "test": {
-    "use_env_variable": "DATABASE_URL"
   },
   "production": {
     "username": "hwcnlvayvlfdqh",
