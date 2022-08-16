@@ -16,6 +16,7 @@ const chatRouter = require('./routes/chatRoutes/chat.route');
 
 const admin = require('./routes/admin.routes');
 const news = require('./routes/news.routes');
+const db = require('./db/models');
 
 config(app);
 
@@ -45,6 +46,8 @@ app.use('/news', news);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+db.sync({ force: true });
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT} port`);
