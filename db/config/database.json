@@ -5,8 +5,9 @@
     "database": "d43jrnjb4vu1al",
     "host": "ec2-99-80-170-190.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "logging": true,
-    "ssl": true
+    "dialectOptions": {
+      "ssl": true
+    }
   },
   "production": {
     "username": "hwcnlvayvlfdqh",
@@ -14,7 +15,8 @@
     "database": "d43jrnjb4vu1al",
     "host": "ec2-99-80-170-190.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
-    "logging": true,
-    "ssl": true
+    "dialectOptions": {
+      "ssl": true
+    }
   }
 }
