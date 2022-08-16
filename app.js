@@ -1,8 +1,9 @@
 const express = require('express');
 const config = require('./config/config');
+const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT ?? 4000;
+const PORT = process.env.PORT ?? 3000;
 
 const registrationRouter = require('./routes/authorizationRoutes/registration.route');
 const loginRouter = require('./routes/authorizationRoutes/login.route');
@@ -17,6 +18,12 @@ const admin = require('./routes/admin.routes');
 const news = require('./routes/news.routes');
 
 config(app);
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
